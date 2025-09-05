@@ -1,0 +1,7 @@
+{
+    "python.analysis.typeCheckingMode": "standard",
+    "emmet.includeLanguages": {
+        "item": "django-html",
+        "value": "html"
+    }
+}

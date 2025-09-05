@@ -1,0 +1,82 @@
+{% extends 'ui/base.html' %}
+<!---->
+{% load i18n wagtailcore_tags wagtailsearchpromotions_tags %}
+
+<!---->
+{% block title %}{{ block.super }} | {% trans 'Search' %}{% endblock %}
+
+<!---->
+{% block content %}
+<div class="container mx-auto grid gap-8 pt-20 px-4">
+  <h1 class="text-3xl text-primary font-black lg:text-5xl">
+    {% trans 'Search' %}
+  </h1>
+
+  <form class="grid gap-4" method="get" action="#">
+    <label
+      class="mx-auto max-w-xl w-full input input-primary xl:input-lg 2xl:input-xl"
+    >
+      <i
+        data-lucide="search"
+        class="size-4 text-primary opacity-50 md:size-6 lg:size-8"
+      ></i>
+
+      <input
+        required
+        type="search"
+        name="search"
+        class="grow"
+        placeholder="{% trans 'Search' %}"
+        value="{{ search_query|default:'' }}"
+      />
+      <button type="submit" class="btn btn-sm btn-primary">
+        {% trans 'Go' %}
+      </button>
+    </label>
+  </form>
+
+  {% if search_results %}
+  <h1 class="text-xl text-primary lg:text-3xl">
+    {% trans 'Search results' %} ({{ search_results.count }})
+  </h1>
+
+  <ol class="grid grid-cols-12 grid-rows-[auto] gap-4">
+    {% for result in search_results %}
+    <!---->
+    {% include 'ui/components/article.html' with article=result %}
+    <!---->
+    {% empty %}
+    <li>{% trans 'No results found' %}</li>
+    {% endfor %}
+  </ol>
+
+  {% include 'ui/components/pagination.html' %}
+  <!---->
+  {% endif %}
+
+  <!---->
+  {% get_search_promotions search_query as search_promotions %}
+
+  <ul>
+    {% for search_promotion in search_promotions %}
+    <!---->
+    {% if search_promotion.page %}
+    <li>
+      <a href="{% pageurl search_promotion.page %}">
+        <h2>{{ search_promotion.page.title }}</h2>
+        <p>{{ search_promotion.description }}</p>
+      </a>
+    </li>
+    {% else %}
+    <li>
+      <a href="{{ search_promotion.external_link_url }}">
+        <h2>{{ search_promotion.external_link_text }}</h2>
+        <p>{{ search_promotion.description }}</p>
+      </a>
+    </li>
+    {% endif %}
+    <!---->
+    {% endfor %}
+  </ul>
+</div>
+{% endblock %}

@@ -1,0 +1,107 @@
+name: CI
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+
+jobs:
+
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+
+      - name: Install Dependencies
+        run: |
+          python -m venv .venv
+          source .venv/bin/activate
+          pip install --upgrade pip
+          pip install poetry
+          poetry install
+          
+      - name: Start Django project
+        run: |
+          source .venv/bin/activate
+          poetry run django-admin startproject core
+          mv docs core
+
+          # Configure settings
+          echo "AUTH_USER_MODEL = 'users.User'" >> core/settings.py
+          echo "INSTALLED_APPS += [" >> core/settings.py
+          echo "    'docs'," >> core/settings.py
+          echo "    'docs.apps.articles'," >> core/settings.py
+          echo "    'docs.apps.blog'," >> core/settings.py
+          echo "    'docs.apps.categories'," >> core/settings.py
+          echo "    'docs.apps.home'," >> core/settings.py
+          echo "    'docs.apps.links'," >> core/settings.py
+          echo "    'docs.apps.tags'," >> core/settings.py
+          echo "    'docs.apps.users'," >> core/settings.py
+          echo "    'docs.cms'," >> core/settings.py
+          echo "    'docs.ui'," >> core/settings.py
+          echo "    'django_countries'," >> core/settings.py
+          echo "    'phonenumber_field'," >> core/settings.py
+          echo "    'django_filters'," >> core/settings.py
+          echo "    'rest_wind'," >> core/settings.py
+          echo "    'corsheaders'," >> core/settings.py
+          echo "    'djoser'," >> core/settings.py
+          echo "    'rest_framework'," >> core/settings.py
+          echo "    'rest_framework.authtoken'," >> core/settings.py
+          echo "    'wagtail_localize'," >> core/settings.py
+          echo "    'wagtail_localize.locales'," >> core/settings.py
+          echo "    'wagtail.contrib.frontend_cache'," >> core/settings.py
+          echo "    'wagtail.contrib.search_promotions'," >> core/settings.py
+          echo "    'wagtail.contrib.forms'," >> core/settings.py
+          echo "    'wagtail.contrib.redirects'," >> core/settings.py
+          echo "    'wagtail.embeds'," >> core/settings.py
+          echo "    'wagtail.sites'," >> core/settings.py
+          echo "    'wagtail.users'," >> core/settings.py
+          echo "    'wagtail.snippets'," >> core/settings.py
+          echo "    'wagtail.documents'," >> core/settings.py
+          echo "    'wagtail.images'," >> core/settings.py
+          echo "    'wagtail.search'," >> core/settings.py
+          echo "    'wagtail.admin'," >> core/settings.py
+          echo "    'wagtail_ai'," >> core/settings.py
+          echo "    'wagtail'," >> core/settings.py
+          echo "    'modelcluster'," >> core/settings.py
+          echo "    'taggit'," >> core/settings.py
+          echo "]" >> core/settings.py
+          echo "MIDDLEWARE += ['wagtail.contrib.redirects.middleware.RedirectMiddleware']" >> core/settings.py
+
+          # Setup URLConf
+          echo "from django.conf import settings" >> core/urls.py
+          echo "from django.conf.urls.i18n import i18n_patterns" >> core/urls.py
+          echo "from django.conf.urls.static import static" >> core/urls.py
+          echo "from django.urls import include, re_path" >> core/urls.py
+          echo "from wagtail import urls as wagtail_urls" >> core/urls.py
+          echo "from wagtail.admin import urls as wagtailadmin_urls" >> core/urls.py
+          echo "from wagtail.documents import urls as wagtaildocs_urls" >> core/urls.py
+          echo "from wagtail.images.views.serve import ServeView" >> core/urls.py
+          echo "urlpatterns += [" >> core/urls.py
+          echo "    path('', include('django.conf.urls.i18n'))," >> core/urls.py
+          echo "    re_path( r'^images/([^/]*)/(\d*)/([^/]*)/[^/]*$', ServeView.as_view(), name='wagtailimages_serve')," >> core/urls.py
+          echo "] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)" >> core/urls.py
+          echo "urlpatterns += i18n_patterns(" >> core/urls.py
+          echo "    path('admin/', admin.site.urls)," >> core/urls.py
+          echo "    path('api/', include('rest_framework.urls'))," >> core/urls.py
+          echo "    path('api/', include('djoser.urls'))," >> core/urls.py
+          echo "    path('api/', include('djoser.urls.authtoken'))," >> core/urls.py
+          echo "    path('documents/', include(wagtaildocs_urls))," >> core/urls.py
+          echo "    path('dashboard/', include(wagtailadmin_urls))," >> core/urls.py
+          echo "    path('', include('django.contrib.auth.urls'))," >> core/urls.py
+          echo "    path('api/', include('docs.api.urls'))," >> core/urls.py
+          echo "    path('', include('docs.ui.urls', namespace='ui'))," >> core/urls.py
+          echo "    path('', include(wagtail_urls))," >> core/urls.py
+          echo ")" >> core/urls.py
+
+      - name: Run the docs
+        run: |
+          source .venv/bin/activate
+          poetry run python core/manage.py migrate
+          poetry run python core/manage.py check
+          poetry run python core/manage.py test

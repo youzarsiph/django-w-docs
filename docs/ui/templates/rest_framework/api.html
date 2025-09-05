@@ -1,0 +1,90 @@
+{% extends 'rest_framework/base.html' %}{% load i18n static docs %}
+
+<!---->
+{% block title %}{% trans 'Django Docs' %} | API | {{ name }}{% endblock %}
+
+<!---->
+{% block highlight_theme %}{{ block.super }}
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css"
+/>
+{% endblock %}
+
+<!---->
+{% block toggle_theme %}silk{% endblock %}
+
+<!---->
+{% block theme %}luxury{% endblock %}
+
+<!---->
+{% block branding %}
+<div
+  class="tooltip tooltip-right tooltip-primary"
+  data-tip="{% trans 'Django Docs | API' %}"
+>
+  <h1 class="relative">
+    <a
+      href="/{{ LANGUAGE_CODE }}/api/"
+      class="btn btn-square btn-primary lg:btn-lg"
+    >
+      <i data-lucide="book-text" class="lg:size-8"></i>
+      <span class="sr-only"> {% trans 'Django Docs | API' %} </span>
+    </a>
+  </h1>
+</div>
+{% endblock %}
+
+<!---->
+{% block branding_text %}
+<div></div>
+{% endblock %}
+
+<!---->
+{% block userlinks %}
+<li class="tooltip tooltip-right tooltip-primary" data-tip="{% trans 'Home' %}">
+  <a
+    href="/{{ LANGUAGE_CODE }}/api/"
+    class="btn btn-square btn-soft btn-primary"
+  >
+    <i data-lucide="home"></i>
+    <span class="sr-only">{% trans 'Home' %}</span>
+  </a>
+</li>
+<li
+  class="tooltip tooltip-right tooltip-primary"
+  data-tip="{% trans 'Pages' %}"
+>
+  <a
+    href="/{{ LANGUAGE_CODE }}/api/pages/"
+    class="btn btn-square btn-soft btn-primary"
+  >
+    <i data-lucide="file-text"></i>
+    <span class="sr-only">{% trans 'Pages' %}</span>
+  </a>
+</li>
+<li
+  class="tooltip tooltip-right tooltip-primary"
+  data-tip="{% trans 'Images' %}"
+>
+  <a
+    href="/{{ LANGUAGE_CODE }}/api/images/"
+    class="btn btn-square btn-soft btn-primary"
+  >
+    <i data-lucide="images"></i>
+    <span class="sr-only">{% trans 'Images' %}</span>
+  </a>
+</li>
+<li
+  class="tooltip tooltip-right tooltip-primary"
+  data-tip="{% trans 'Documents' %}"
+>
+  <a
+    href="/{{ LANGUAGE_CODE }}/api/documents/"
+    class="btn btn-square btn-soft btn-primary"
+  >
+    <i data-lucide="book-text"></i>
+    <span class="sr-only">{% trans 'Documents' %}</span>
+  </a>
+</li>
+{% endblock %}

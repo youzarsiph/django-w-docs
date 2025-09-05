@@ -1,0 +1,16 @@
+"""Data Models for docs.apps.tags"""
+
+from django.db import models
+from modelcluster.fields import ParentalKey
+from taggit.models import TaggedItemBase
+
+
+# Create your models here.
+class Tag(TaggedItemBase):
+    """Through model for defining m2m rel between Pages and Tags"""
+
+    content_object = ParentalKey(
+        "pages.DocsPage",
+        related_name="tagged_items",
+        on_delete=models.CASCADE,
+    )

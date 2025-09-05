@@ -1,0 +1,16 @@
+{% extends 'docs/base.html' %}{% load i18n docs wagtailcore_tags %}
+
+<!---->
+{% block content %}
+<section class="container flex flex-col gap-8 mx-auto px-4 py-20">
+  {% include 'docs/components/breadcrumbs.html' %}
+
+  <div
+    class="mx-auto prose prose-sm md:processes-md prose-video:rounded-box xl:prose-lg 2xl:prose-xl prose-headings:text-primary prose-headings:font-serif rtl:prose-headings:font-kufi prose-img:rounded-box prose-img:w-full"
+  >
+    <h1>{{ index.title }}</h1>
+
+    {{ index.content }}
+  </div>
+</section>
+{% endblock %}

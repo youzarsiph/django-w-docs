@@ -1,0 +1,32 @@
+[tool.poetry]
+name = "django-docs"
+version = "0.1.0"
+description = "A reusable documentation app powered by Python, Django, DRF and Wagtail CMS."
+authors = ["Yousef Abu Shanab <josephyousef249@gmail.com>"]
+license = "MIT"
+readme = "README.md"
+packages = [{ include = "docs" }]
+homepage = "https://github.com/youzarsiph/django-docs"
+repository = "https://github.com/youzarsiph/django-docs"
+documentation = "https://github.com/youzarsiph/django-docs"
+
+[tool.poetry.dependencies]
+python = ">=3.10"
+django = ">=5.2.1"
+django-cors-headers = ">=4.7.0"
+django-debug-toolbar = ">=6.0.0"
+django-filter = ">=25.1"
+djangorestframework = ">=3.16.0"
+drf-restwind = ">=0.2.0"
+pillow = ">=11.2.1"
+wagtail = ">=7.0"
+wagtail-ai = ">=2.1.2"
+wagtail-localize = ">=1.12.1"
+
+[tool.poetry.group.dev.dependencies]
+black = ">=25.1.0"
+ruff = ">=0.11.9"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

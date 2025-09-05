@@ -1,0 +1,243 @@
+{% load i18n static docs wagtailcore_tags wagtailuserbar %}
+<!DOCTYPE html>
+<html
+  lang="{{ LANGUAGE_CODE }}"
+  dir="{% if LANGUAGE_CODE == 'ar' %}rtl{% else %}ltr{% endif %}"
+>
+  {% get_site_root as home %}
+  <head>
+    {% block head %}
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{% block title %}{% trans 'Django Docs' %}{% endblock %}</title>
+    {% block meta %}{% endblock %}
+
+    <!---->
+    {% block styles %}
+    <link
+      href="{% static 'docs/css/styles.css' %}"
+      rel="stylesheet"
+      type="text/css"
+    />
+    {% endblock %}
+    <!---->
+
+    {% endblock %}
+  </head>
+
+  <body class="font-sans antialiased">
+    {% wagtailuserbar %}
+
+    <div class="drawer">
+      <input id="nav-drawer" type="checkbox" class="drawer-toggle" />
+
+      <section id="content" class="drawer-content">
+        <div
+          id="main"
+          class="bg-base-300 relative h-dvh overflow-hidden sm:p-1 lg:p-2"
+        >
+          <div class="flex size-full items-center gap-1">
+            <section
+              class="bg-base-100 relative size-full grow overflow-hidden sm:rounded-box"
+            >
+              <section class="size-full grid gap-8 overflow-y-auto">
+                <!-- Navbar -->
+                {% block navbar %}
+                <header
+                  class="absolute inset-x-0 top-0 z-40 px-2 backdrop-blur-3xl lg:px-4"
+                >
+                  <nav class="navbar p-0">
+                    <div class="navbar-start gap-4">
+                      <div
+                        class="tooltip tooltip-right rtl:tooltip-left tooltip-primary z-10"
+                        data-tip="{% trans 'Open drawer' %}"
+                      >
+                        <label
+                          for="nav-drawer"
+                          aria-label="{% trans 'close sidebar' %}"
+                          class="btn btn-square btn-soft btn-sm btn-primary md:btn-md 2xl:btn-lg"
+                        >
+                          <i data-lucide="menu" class="size-4 md:size-6"></i>
+                          <span class="sr-only">
+                            {% trans 'Open drawer' %}
+                          </span>
+                        </label>
+                      </div>
+
+                      {% block branding %}
+                      <div
+                        class="tooltip tooltip-right rtl:tooltip-left tooltip-primary"
+                        data-tip="{% trans 'Docs' %}"
+                      >
+                        <h1 class="relative">
+                          <a
+                            href="{% page_url home LANGUAGE_CODE %}"
+                            class="btn btn-square btn-primary lg:btn-lg"
+                          >
+                            <div
+                              class="bg-primary rounded-field text-primary-content absolute inset-0 size-full flex rotate-45 items-center justify-center"
+                            >
+                              <i
+                                data-lucide="book-text"
+                                class="-rotate-45 lg:size-8 2xl:size-10"
+                              ></i>
+                            </div>
+                            <span class="sr-only"> {% trans 'Docs' %} </span>
+                          </a>
+                        </h1>
+                      </div>
+                      {% endblock %}
+                    </div>
+
+                    <div class="navbar-end gap-2">
+                      <div
+                        class="tooltip tooltip-left rtl:tooltip-right tooltip-primary lg:hidden"
+                        data-tip="{% trans 'Search' %}"
+                      >
+                        <a
+                          href="#"
+                          class="btn btn-square btn-soft btn-sm btn-primary md:btn-md 2xl:btn-lg"
+                        >
+                          <i data-lucide="search" class="size-4 md:size-6"></i>
+                          <span class="sr-only">{% trans 'Search' %}</span>
+                        </a>
+                      </div>
+
+                      {% block navbar_end %}{% endblock %}
+                    </div>
+                  </nav>
+                </header>
+                {% endblock %}
+
+                <!---->
+                {% block content %}{% endblock %}
+
+                <!---->
+                {% block footer %}{% endblock %}
+              </section>
+            </section>
+          </div>
+        </div>
+      </section>
+
+      <section id="sidebar" class="drawer-side z-50">
+        <label
+          for="nav-drawer"
+          aria-label="{% trans 'close sidebar' %}"
+          class="drawer-overlay"
+        ></label>
+
+        <section
+          class="bg-base-100/75 md:min-w-xs lg:min-w-sm xl:min-w-md 2xl:min-w-lg dark:bg-base-100/50 flex size-full flex-col justify-between overflow-hidden overflow-y-auto backdrop-blur-3xl sm:w-10/12 md:w-8/12 lg:w-1/3 2xl:w-1/4"
+        >
+          <div class="grid">
+            <div class="grid gap-4 p-4">
+              <header class="flex items-center justify-between gap-4">
+                {% block drawer_branding %}
+                <div
+                  class="tooltip tooltip-right rtl:tooltip-left tooltip-primary tooltip-open aspect-square"
+                  data-tip="{% trans 'Docs' %}"
+                >
+                  <h1 class="relative">
+                    <a
+                      href="{% page_url home LANGUAGE_CODE %}"
+                      class="btn btn-square btn-primary lg:btn-lg"
+                    >
+                      <div
+                        class="bg-primary rounded-field text-primary-content absolute inset-0 size-full flex rotate-45 items-center justify-center"
+                      >
+                        <i
+                          data-lucide="book-text"
+                          class="-rotate-45 lg:size-8 2xl:size-10"
+                        ></i>
+                      </div>
+                      <span class="sr-only">{% trans 'Docs' %}</span>
+                    </a>
+                  </h1>
+                </div>
+                {% endblock %}
+
+                <div
+                  class="tooltip tooltip-left rtl:tooltip-right hover:tooltip-error"
+                  data-tip="{% trans 'Close' %}"
+                >
+                  <label
+                    for="nav-drawer"
+                    aria-label="{% trans 'close sidebar' %}"
+                    class="btn btn-square btn-soft btn-sm btn-primary hover:btn-error md:btn-md 2xl:btn-lg"
+                  >
+                    <i data-lucide="x" class="size-4 md:size-6"></i>
+                    <span class="sr-only">{% trans 'Close' %}</span>
+                  </label>
+                </div>
+              </header>
+
+              <form method="get" class="join w-full" action="#">
+                <label
+                  class="join-item w-full bg-transparent input input-primary"
+                >
+                  <i
+                    data-lucide="search"
+                    class="size-4 text-primary md:size-6"
+                  ></i>
+                  <input
+                    required
+                    type="search"
+                    name="search"
+                    class="grow placeholder-primary"
+                    placeholder="{% trans 'Search' %}"
+                  />
+                </label>
+
+                <button
+                  type="submit"
+                  class="btn join-item btn-square btn-soft btn-primary"
+                >
+                  <i data-lucide="check-circle2" class="size-4 md:size-6"></i>
+                  <span class="sr-only">{% trans 'Search' %}</span>
+                </button>
+              </form>
+            </div>
+
+            <ol class="menu size-full grow gap-4 overflow-y-auto px-4">
+              <li>
+                <a
+                  href="{% page_url home LANGUAGE_CODE %}"
+                  class="flex items-center gap-4"
+                >
+                  <i data-lucide="home" class="size-4 md:size-6"></i>
+                  <span>{% trans 'Home' %}</span>
+                </a>
+              </li>
+
+              {% block drawer_content %}
+              <!---->
+              {% for page in home.get_descendants %}
+              <li>
+                <a
+                  href="{% page_url page LANGUAGE_CODE %}"
+                  class="flex items-center gap-4"
+                >
+                  <i data-lucide="folder" class="size-4 md:size-6"></i>
+                  <span>{{ page }}---{{ page.content_type.name }}</span>
+                </a>
+              </li>
+              {% endfor %}
+              <!---->
+              {% endblock %}
+            </ol>
+          </div>
+
+          <ol class="grid gap-4 p-4">
+            {% block drawer_bottom %}{% endblock %}
+          </ol>
+        </section>
+      </section>
+    </div>
+
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+      lucide.createIcons();
+    </script>
+  </body>
+</html>

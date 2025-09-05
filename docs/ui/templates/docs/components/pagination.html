@@ -1,0 +1,67 @@
+{% load i18n %}
+
+<!---->
+<ol class="join flex-wrap">
+  {% if page_obj.has_previous %}
+  <li
+    class="tooltip tooltip-top tooltip-primary"
+    data-tip="{% translate 'Previous' %}"
+  >
+    <a
+      href="?page={{ page_obj.previous_page_number }}"
+      class="btn join-item btn-primary"
+    >
+      <i data-lucide="chevron-left" class="size-4 lg:size-6 rtl:rotate-180"></i>
+      <span class="sr-only">{% translate 'Previous' %}</span>
+    </a>
+  </li>
+
+  <li
+    class="tooltip tooltip-top tooltip-info"
+    data-tip="{% translate 'First' %}"
+  >
+    <a href="?page=1" class="btn join-item btn-info">
+      {% translate 'First' %}
+    </a>
+  </li>
+  {% endif %}
+
+  <li
+    class="tooltip tooltip-top tooltip-success"
+    data-tip="{% translate 'Current' %}"
+  >
+    <button class="btn join-item btn-success">
+      {{ page_obj.number }} {% trans 'of' %} {{ page_obj.paginator.num_pages }}
+    </button>
+  </li>
+
+  {% if page_obj.has_next %}
+  <li
+    class="tooltip tooltip-top tooltip-info"
+    data-tip="{% translate 'Last' %}"
+  >
+    <a
+      href="?page={{ page_obj.paginator.num_pages }}"
+      class="btn join-item btn-info"
+    >
+      {% translate 'Last' %}
+    </a>
+  </li>
+
+  <li
+    class="tooltip tooltip-top tooltip-primary"
+    data-tip="{% translate 'Next' %}"
+  >
+    <a
+      href="?page={{ page_obj.next_page_number }}"
+      class="btn join-item btn-primary"
+    >
+      <i
+        data-lucide="chevron-right"
+        class="size-4 lg:size-6 rtl:rotate-180"
+      ></i>
+      <span class="sr-only">{% translate 'Next' %}</span>
+    </a>
+  </li>
+  {% endif %}
+</ol>
