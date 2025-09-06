@@ -1,4 +1,4 @@
-{% load i18n static docs wagtailcore_tags wagtailuserbar %}
+{% load i18n static docs wagtailuserbar %}
 <!DOCTYPE html>
 <html
   lang="{{ LANGUAGE_CODE }}"
@@ -40,15 +40,15 @@
             <section
               class="bg-base-100 relative size-full grow overflow-hidden sm:rounded-box"
             >
-              <section class="size-full grid gap-8 overflow-y-auto">
+              <section class="size-full grid gap-4 overflow-y-auto">
                 <!-- Navbar -->
                 {% block navbar %}
                 <header
                   class="absolute inset-x-0 top-0 z-40 px-2 backdrop-blur-3xl lg:px-4"
                 >
                   <nav class="navbar p-0">
-                    <div class="navbar-start gap-4">
-                      <div
+                    <ol class="navbar-start gap-4">
+                      <li
                         class="tooltip tooltip-right rtl:tooltip-left tooltip-primary z-10"
                         data-tip="{% trans 'Open drawer' %}"
                       >
@@ -62,10 +62,10 @@
                             {% trans 'Open drawer' %}
                           </span>
                         </label>
-                      </div>
+                      </li>
 
                       {% block branding %}
-                      <div
+                      <li
                         class="tooltip tooltip-right rtl:tooltip-left tooltip-primary"
                         data-tip="{% trans 'Docs' %}"
                       >
@@ -85,32 +85,67 @@
                             <span class="sr-only"> {% trans 'Docs' %} </span>
                           </a>
                         </h1>
-                      </div>
+                      </li>
                       {% endblock %}
-                    </div>
+                    </ol>
 
-                    <div class="navbar-end gap-2">
-                      <div
-                        class="tooltip tooltip-left rtl:tooltip-right tooltip-primary lg:hidden"
+                    <ol class="navbar-center gap-2">
+                      {% block navbar_center %}{% endblock %}
+                    </ol>
+
+                    <ol class="navbar-end gap-2">
+                      <li
+                        class="tooltip tooltip-left rtl:tooltip-right tooltip-primary"
                         data-tip="{% trans 'Search' %}"
                       >
                         <a
-                          href="#"
+                          href="{% url 'docs:search' %}"
                           class="btn btn-square btn-soft btn-sm btn-primary md:btn-md 2xl:btn-lg"
                         >
                           <i data-lucide="search" class="size-4 md:size-6"></i>
                           <span class="sr-only">{% trans 'Search' %}</span>
                         </a>
-                      </div>
+                      </li>
 
                       {% block navbar_end %}{% endblock %}
-                    </div>
+                    </ol>
                   </nav>
                 </header>
                 {% endblock %}
 
                 <!---->
-                {% block content %}{% endblock %}
+                {% block content %}
+                <div class="container grid gap-8 px-4 pt-20 mx-auto">
+                  <div
+                    class="hero bg-gradient-to-r from-emerald-500 to-sky-400 rounded-box"
+                  >
+                    <div class="hero-content text-white grid min-h-96">
+                      <h1 class="text-3xl font-black lg:text-7xl">
+                        {% trans 'Django Docs' %}
+                      </h1>
+
+                      <div class="flex items-center gap-4">
+                        <a
+                          href="https://github.com/youzarsiph/django-w-docs"
+                          class="btn btn-lg btn-primary"
+                        >
+                          {% trans 'Get started' %}
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div
+                    class="mx-auto prose prose-sm prose-video:rounded-box xl:prose-lg 2xl:prose-xl prose-headings:text-primary prose-headings:font-serif rtl:prose-headings:font-kufi prose-img:rounded-box prose-img:w-full"
+                  >
+                    <p class="lead">
+                      {% blocktrans trimmed %}A reusable documentation app
+                      powered by Python, Django, DRF, Wagtail CMS, TailwindCSS
+                      and DaisyUI.{% endblocktrans %}
+                    </p>
+                  </div>
+                </div>
+                {% endblock %}
 
                 <!---->
                 {% block footer %}{% endblock %}
@@ -172,7 +207,11 @@
                 </div>
               </header>
 
-              <form method="get" class="join w-full" action="#">
+              <form
+                method="get"
+                class="join w-full"
+                action="{% url 'docs:search' %}"
+              >
                 <label
                   class="join-item w-full bg-transparent input input-primary"
                 >
@@ -199,28 +238,29 @@
               </form>
             </div>
 
-            <ol class="menu size-full grow gap-4 overflow-y-auto px-4">
+            <ol class="menu 2xl:menu-lg size-full grow gap-2 overflow-y-auto">
+              {% block drawer_content %}
               <li>
-                <a
-                  href="{% page_url home LANGUAGE_CODE %}"
-                  class="flex items-center gap-4"
-                >
+                <a href="{% page_url home LANGUAGE_CODE %}">
                   <i data-lucide="home" class="size-4 md:size-6"></i>
-                  <span>{% trans 'Home' %}</span>
+                  {% trans 'Home' %}
                 </a>
               </li>
-
-              {% block drawer_content %}
-              <!---->
-              {% for page in home.get_descendants %}
               <li>
-                <a
-                  href="{% page_url page LANGUAGE_CODE %}"
-                  class="flex items-center gap-4"
-                >
-                  <i data-lucide="folder" class="size-4 md:size-6"></i>
-                  <span>{{ page }}---{{ page.content_type.name }}</span>
+                <a href="https://pypi.org/project/django-w-docs/">
+                  <i data-lucide="package" class="size-4 md:size-6"></i>
+                  {% trans 'Package' %}
                 </a>
+              </li>
+              <li>
+                <a href="https://github.com/youzarsiph/django-w-docs">
+                  <i data-lucide="folder-git-2" class="size-4 md:size-6"></i>
+                  {% trans 'Repo' %}
+                </a>
+              </li>
+              {% for page in home.get_children %}
+              <li>
+                <a href="{% page_url page LANGUAGE_CODE %}">{{ page }}</a>
               </li>
               {% endfor %}
               <!---->

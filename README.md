@@ -1,12 +1,11 @@
-# django-docs
+# django-w-docs
 
-[![CI](https://github.com/youzarsiph/django-docs/actions/workflows/ci.yml/badge.svg)](https://github.com/youzarsiph/django-docs/actions/workflows/ci.yml)
-[![CD](https://github.com/youzarsiph/django-docs/actions/workflows/cd.yml/badge.svg)](https://github.com/youzarsiph/django-docs/actions/workflows/cd.yml)
-[![Code Style: Black](https://github.com/youzarsiph/django-docs/actions/workflows/black.yml/badge.svg)](https://github.com/youzarsiph/django-docs/actions/workflows/black.yml)
-[![Code Linting: Ruff](https://github.com/youzarsiph/django-docs/actions/workflows/ruff.yml/badge.svg)](https://github.com/youzarsiph/django-docs/actions/workflows/ruff.yml)
-[![Code Testing](https://github.com/youzarsiph/django-docs/actions/workflows/tests.yml/badge.svg)](https://github.com/youzarsiph/django-docs/actions/workflows/tests.yml)
-[![Docker Image](https://github.com/youzarsiph/django-docs/actions/workflows/docker-image.yml/badge.svg)](https://github.com/youzarsiph/django-docs/actions/workflows/docker-image.yml)
-[![Docker Publish](https://github.com/youzarsiph/django-docs/actions/workflows/docker-publish.yml/badge.svg)](https://github.com/youzarsiph/django-docs/actions/workflows/docker-publish.yml)
+[![CI](https://github.com/youzarsiph/django-w-docs/actions/workflows/ci.yml/badge.svg)](https://github.com/youzarsiph/django-w-docs/actions/workflows/ci.yml)
+[![CD](https://github.com/youzarsiph/django-w-docs/actions/workflows/cd.yml/badge.svg)](https://github.com/youzarsiph/django-w-docs/actions/workflows/cd.yml)
+[![Code Style: Black](https://github.com/youzarsiph/django-w-docs/actions/workflows/black.yml/badge.svg)](https://github.com/youzarsiph/django-w-docs/actions/workflows/black.yml)
+[![Code Linting: Ruff](https://github.com/youzarsiph/django-w-docs/actions/workflows/ruff.yml/badge.svg)](https://github.com/youzarsiph/django-w-docs/actions/workflows/ruff.yml)
+[![Docker Image](https://github.com/youzarsiph/django-w-docs/actions/workflows/docker-image.yml/badge.svg)](https://github.com/youzarsiph/django-w-docs/actions/workflows/docker-image.yml)
+[![Docker Publish](https://github.com/youzarsiph/django-w-docs/actions/workflows/docker-publish.yml/badge.svg)](https://github.com/youzarsiph/django-w-docs/actions/workflows/docker-publish.yml)
 
 ## Overview
 
@@ -27,7 +26,7 @@ We warmly welcome contributions from the community. Please refer to our [CONTRIB
 
 ## Support
 
-For inquiries or support, please open an issue or join the discussion in the [GitHub Discussions](https://github.com/youzarsiph/django-docs/discussions) section to engage with the community.
+For inquiries or support, please open an issue or join the discussion in the [GitHub Discussions](https://github.com/youzarsiph/django-w-docs/discussions) section to engage with the community.
 
 ## Licensing
 

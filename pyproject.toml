@@ -1,14 +1,14 @@
 [tool.poetry]
-name = "django-docs"
+name = "django-w-docs"
 version = "0.1.0"
 description = "A reusable documentation app powered by Python, Django, DRF and Wagtail CMS."
 authors = ["Yousef Abu Shanab <josephyousef249@gmail.com>"]
 license = "MIT"
 readme = "README.md"
 packages = [{ include = "docs" }]
-homepage = "https://github.com/youzarsiph/django-docs"
-repository = "https://github.com/youzarsiph/django-docs"
-documentation = "https://github.com/youzarsiph/django-docs"
+homepage = "https://github.com/youzarsiph/django-w-docs"
+repository = "https://github.com/youzarsiph/django-w-docs"
+documentation = "https://github.com/youzarsiph/django-w-docs"
 
 [tool.poetry.dependencies]
 python = ">=3.10"

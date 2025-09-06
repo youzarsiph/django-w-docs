@@ -1,6 +1,6 @@
-{% extends 'ui/base.html' %}
+{% extends 'docs/base.html' %}
 <!---->
-{% load i18n wagtailcore_tags wagtailsearchpromotions_tags %}
+{% load i18n docs wagtailsearchpromotions_tags %}
 
 <!---->
 {% block title %}{{ block.super }} | {% trans 'Search' %}{% endblock %}
@@ -12,7 +12,7 @@
     {% trans 'Search' %}
   </h1>
 
-  <form class="grid gap-4" method="get" action="#">
+  <form class="grid gap-4" method="get" action="{% url 'docs:search' %}">
     <label
       class="mx-auto max-w-xl w-full input input-primary xl:input-lg 2xl:input-xl"
     >
@@ -41,16 +41,28 @@
   </h1>
 
   <ol class="grid grid-cols-12 grid-rows-[auto] gap-4">
-    {% for result in search_results %}
-    <!---->
-    {% include 'ui/components/article.html' with article=result %}
-    <!---->
+    {% for page in search_results %}
+    <li
+      role="article"
+      class="relative card bg-base-300 hover:bg-base-200 card-sm md:card-md xl:card-lg 2xl:card-xl col-span-12 size-full shadow-sm md:col-span-6 lg:col-span-4 2xl:col-span-3"
+    >
+      <a href="{% page_url page LANGUAGE_CODE %}" class="absolute inset-0">
+        <span class="sr-only">{% trans 'Read' %}</span>
+      </a>
+
+      <div class="card-body">
+        <h2 class="card-title text-primary">{{ page.title }}</h2>
+
+        <p class="grow-0">{{ page.description }}</p>
+      </div>
+    </li>
     {% empty %}
     <li>{% trans 'No results found' %}</li>
     {% endfor %}
   </ol>
 
-  {% include 'ui/components/pagination.html' %}
+  {% include 'docs/components/pagination.html' %}
+
   <!---->
   {% endif %}
 
@@ -62,7 +74,7 @@
     <!---->
     {% if search_promotion.page %}
     <li>
-      <a href="{% pageurl search_promotion.page %}">
+      <a href="{% page_url search_promotion.page LANGUAGE_CODE %}">
         <h2>{{ search_promotion.page.title }}</h2>
         <p>{{ search_promotion.description }}</p>
       </a>

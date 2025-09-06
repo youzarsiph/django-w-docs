@@ -1,12 +1,12 @@
-# django-docs Arabic translations.
+# django-w-docs Arabic translations.
 # Copyright (C) 2025 Yousuf Abu Shanab
-# This file is distributed under the same license as the django-docs package.
+# This file is distributed under the same license as the django-w-docs package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: django-docs 0.1.0\n"
+"Project-Id-Version: django-w-docs 0.1.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2025-09-02 05:39+0000\n"
 "PO-Revision-Date: 2025-6-20 HO:MI+ZONE\n"

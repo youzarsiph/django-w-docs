@@ -1,4 +1,4 @@
-{% extends 'docs/base.html' %}{% load i18n wagtailcore_tags %}
+{% extends 'docs/base.html' %}{% load i18n docs %}
 
 <!---->
 {% block content %}
@@ -6,7 +6,7 @@
   {% include 'docs/components/breadcrumbs.html' %}
 
   <div
-    class="mx-auto prose prose-sm md:processes-md prose-video:rounded-box xl:prose-lg 2xl:prose-xl prose-headings:text-primary prose-headings:font-serif rtl:prose-headings:font-kufi prose-img:rounded-box prose-img:w-full"
+    class="mx-auto prose prose-sm prose-video:rounded-box xl:prose-lg 2xl:prose-xl prose-headings:text-primary prose-headings:font-serif rtl:prose-headings:font-kufi prose-img:rounded-box prose-img:w-full"
   >
     <h1>{{ section.title }}</h1>
 
@@ -14,5 +14,41 @@
 
     {{ section.content }}
   </div>
+
+  <ol class="grid grid-cols-12 gap-4">
+    {% for page in section.get_children.specific %}
+    <li
+      role="article"
+      class="relative card bg-base-300 hover:bg-base-200 card-sm md:card-md xl:card-lg 2xl:card-xl col-span-12 size-full shadow-sm md:col-span-6 lg:col-span-4 2xl:col-span-3"
+    >
+      <a href="{% page_url page LANGUAGE_CODE %}" class="absolute inset-0">
+        <span class="sr-only">{% trans 'Read' %}</span>
+      </a>
+
+      <div class="card-body">
+        <h2 class="card-title text-primary">{{ page.title }}</h2>
+
+        <p class="grow-0">{{ page.description }}</p>
+      </div>
+    </li>
+    {% endfor %}
+  </ol>
 </section>
+{% endblock %}
+
+<!---->
+{% block drawer_content %}
+<li>
+  <a href="{% page_url section.get_parent LANGUAGE_CODE %}">
+    <i data-lucide="arrow-left" class="size-4 md:size-6 rtl:rotate-180"></i>
+    {{ section.get_parent.title }}
+  </a>
+</li>
+
+{% for page in section.get_children %}
+<li>
+  <a href="{% page_url page LANGUAGE_CODE %}">{{ page.title }}</a>
+</li>
+{% endfor %}
+<!---->
 {% endblock %}
