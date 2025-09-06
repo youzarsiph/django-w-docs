@@ -1,11 +1,5 @@
 # To ensure app dependencies are ported from your virtual environment/host machine into your container, run 'pip freeze > requirements.txt' in the terminal to overwrite this file
 django
-django-cors-headers
-django-debug-toolbar
-django-filter
 djangorestframework
 drf-restwind
-pillow
 wagtail
-wagtail-ai
-wagtail-localize

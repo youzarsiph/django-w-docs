@@ -6,10 +6,85 @@
 [![Code Linting: Ruff](https://github.com/youzarsiph/django-w-docs/actions/workflows/ruff.yml/badge.svg)](https://github.com/youzarsiph/django-w-docs/actions/workflows/ruff.yml)
 [![Docker Image](https://github.com/youzarsiph/django-w-docs/actions/workflows/docker-image.yml/badge.svg)](https://github.com/youzarsiph/django-w-docs/actions/workflows/docker-image.yml)
 [![Docker Publish](https://github.com/youzarsiph/django-w-docs/actions/workflows/docker-publish.yml/badge.svg)](https://github.com/youzarsiph/django-w-docs/actions/workflows/docker-publish.yml)
+[![PyPI - Version](https://img.shields.io/pypi/v/django-w-docs?logo=pypi&logoColor=white)](https://pypi.org/project/django-w-docs/)
+[![PyPI - Python Version](https://img.shields.io/pypi/pyversions/django-w-docs?logo=python&logoColor=white)](https://pypi.org/project/django-w-docs/)
+[![PyPI - Downloads](https://img.shields.io/pypi/dm/django-w-docs?logo=pypi&logoColor=white)](https://pypi.org/project/django-w-docs/)
+[![PyPI - License](https://img.shields.io/pypi/l/django-w-docs?logo=pypi&logoColor=white)](https://pypi.org/project/django-w-docs/)
 
 ## Overview
 
 A reusable documentation app powered by Python, Django, DRF and Wagtail CMS.
+
+## Get started
+
+Install the package:
+
+```console
+pip install django-w-docs
+```
+
+Configure your `Django` settings:
+
+```python
+# project/settings.py
+
+# Application definition
+INSTALLED_APPS = [
+    "docs",
+    "docs.api",  # Optional if you do not want to use the API
+    "docs.apps.home",
+    "docs.apps.indexes",
+    "docs.apps.pages",
+    "docs.apps.sections",
+    "docs.apps.tags",
+    "docs.cms",
+    "docs.ui",
+    # Deps
+    "rest_wind",  # Optional if you do not want to use the API
+    "rest_framework",  # Optional if you do not want to use the API
+    "wagtail.contrib.search_promotions",
+    "wagtail.contrib.forms",
+    "wagtail.contrib.redirects",
+    "wagtail.embeds",
+    "wagtail.sites",
+    "wagtail.users",
+    "wagtail.snippets",
+    "wagtail.documents",
+    "wagtail.images",
+    "wagtail.search",
+    "wagtail.admin",
+    "wagtail",
+    "modelcluster",
+    "taggit",
+    ...
+]
+```
+
+Run the migrations:
+
+```console
+# In your project root
+python mange.py migrate
+```
+
+Update your `URLConf`:
+
+```python
+# project/urls.py
+
+from django.urls import include, path
+
+
+urlpatterns = [
+    path("", include("docs.ui.urls")),
+    path("api/", include("docs.api.urls")),  # Optional if you do not want to use the API
+    path("api/", include("rest_framework.urls")),  # Optional if you do not want to use the API
+    ...
+    path("documents/", include(wagtaildocs_urls)),
+    path("dashboard/", include(wagtailadmin_urls)),
+    path("", include(wagtail_urls)),  # Make sure this line is the last
+]
+```
 
 ## Key Features
 
