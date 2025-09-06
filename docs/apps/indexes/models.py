@@ -21,7 +21,7 @@ class AbstractDocsIndex(Page):
 
     context_object_name = "index"
     parent_page_types = ["home.Home"]
-    subpage_types = ["sections.DocsSection", "pages.DocsPage"]
+    subpage_types = ["docs_sections.DocsSection", "docs_pages.DocsPage"]
 
     api_fields = [APIField("content")]
     content_panels = Page.content_panels + [FieldPanel("content")]
@@ -31,8 +31,6 @@ class AbstractDocsIndex(Page):
         """Meta data"""
 
         abstract = True
-        verbose_name = _("Docs Index page")
-        verbose_name_plural = _("Docs Index pages")
 
 
 class DocsIndex(AbstractDocsIndex):

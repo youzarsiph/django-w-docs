@@ -1,4 +1,4 @@
-"""Docs Section page"""
+"""Docs Sections"""
 
 from django.db import models
 from django.utils.translation import gettext_lazy as _
@@ -26,8 +26,8 @@ class AbstractDocsSection(Page):
     )
 
     context_object_name = "section"
-    parent_page_types = ["indexes.DocsIndex", "sections.DocsSection"]
-    subpage_types = ["pages.DocsPage", "sections.DocsSection"]
+    parent_page_types = ["docs_indexes.DocsIndex", "docs_sections.DocsSection"]
+    subpage_types = ["docs_pages.DocsPage", "docs_sections.DocsSection"]
 
     api_fields = [APIField("description"), APIField("content")]
     content_panels = Page.content_panels + [
@@ -43,11 +43,9 @@ class AbstractDocsSection(Page):
         """Meta data"""
 
         abstract = True
-        verbose_name = _("Docs sections")
-        verbose_name_plural = _("Docs sections")
 
 
 class DocsSection(AbstractDocsSection):
-    """Docs section pages"""
+    """Docs sections"""
 
     template = "docs/section.html"

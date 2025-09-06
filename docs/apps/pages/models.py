@@ -33,7 +33,7 @@ class AbstractDocsPage(Page):
     )
 
     context_object_name = "page"
-    parent_page_types = ["sections.DocsSection"]
+    parent_page_types = ["docs_indexes.DocsIndex", "docs_sections.DocsSection"]
     subpage_types = []
 
     api_fields = [APIField("description"), APIField("content"), APIField("tags")]
@@ -52,8 +52,6 @@ class AbstractDocsPage(Page):
         """Meta data"""
 
         abstract = True
-        verbose_name = _("Docs pages")
-        verbose_name_plural = _("Docs pages")
 
 
 class DocsPage(AbstractDocsPage):

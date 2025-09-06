@@ -1,11 +1,11 @@
-"""Tests for docs.section.models"""
+"""Tests for docs.pages.models"""
 
 from django.test import TestCase
 
 
 # Create your tests here.
-class DocsSectionTests(TestCase):
-    """DocsSection model tests"""
+class DocsPageTests(TestCase):
+    """DocsPage model tests"""
 
     def setUp(self) -> None:
         """Setup before tests"""

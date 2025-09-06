@@ -2,7 +2,6 @@
 
 from django.utils.translation import gettext_lazy as _
 from taggit.models import Tag
-from wagtail import hooks
 from wagtail.admin.panels import FieldPanel
 from wagtail.snippets.models import register_snippet
 from wagtail.snippets.views.snippets import SnippetViewSet
@@ -25,15 +24,3 @@ class TagsSnippetViewSet(SnippetViewSet):
 
 
 register_snippet(TagsSnippetViewSet)
-
-
-# Create your hooks here.
-@hooks.register("construct_explorer_page_queryset")
-def show_my_pages_only(parent_page, pages, request):
-    """Filter pages by user"""
-
-    match parent_page.content_type.name:
-        case "blogindex":
-            return pages.filter(owner=request.user)
-
-    return pages

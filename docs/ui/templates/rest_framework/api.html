@@ -65,6 +65,18 @@
 </li>
 <li
   class="tooltip tooltip-right tooltip-primary"
+  data-tip="{% trans 'Documents' %}"
+>
+  <a
+    href="/{{ LANGUAGE_CODE }}/api/documents/"
+    class="btn btn-square btn-soft btn-primary"
+  >
+    <i data-lucide="book-text"></i>
+    <span class="sr-only">{% trans 'Documents' %}</span>
+  </a>
+</li>
+<li
+  class="tooltip tooltip-right tooltip-primary"
   data-tip="{% trans 'Images' %}"
 >
   <a
@@ -77,14 +89,14 @@
 </li>
 <li
   class="tooltip tooltip-right tooltip-primary"
-  data-tip="{% trans 'Documents' %}"
+  data-tip="{% trans 'Redirects' %}"
 >
   <a
-    href="/{{ LANGUAGE_CODE }}/api/documents/"
+    href="/{{ LANGUAGE_CODE }}/api/redirects/"
     class="btn btn-square btn-soft btn-primary"
   >
-    <i data-lucide="book-text"></i>
-    <span class="sr-only">{% trans 'Documents' %}</span>
+    <i data-lucide="repeat2"></i>
+    <span class="sr-only">{% trans 'Redirects' %}</span>
   </a>
 </li>
 {% endblock %}

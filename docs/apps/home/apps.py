@@ -4,7 +4,7 @@ from django.apps import AppConfig
 
 
 # Create your AppConf here.
-class HomeConfig(AppConfig):
+class DocsHomeConfig(AppConfig):
     """App Configuration for docs.apps.home"""
 
     # label = "docs_home"

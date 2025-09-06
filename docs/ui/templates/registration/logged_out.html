@@ -1,0 +1,40 @@
+{% extends 'registration/base.html' %}{% load i18n %}
+
+<!---->
+{% block title %}{{ block.super }} | {% trans 'Logged out' %}{% endblock %}
+
+<!---->
+{% block content %}
+<div class="flex px-4 pb-20 pt-28 items-center justify-center">
+  <section
+    class="card card-sm w-full max-w-lg bg-base-200 shadow-xs md:card-md xl:card-lg 2xl:card-xl 2xl:max-w-xl"
+  >
+    <div class="mx-auto p-6">
+      <header
+        class="tooltip tooltip-bottom tooltip-primary tooltip-open"
+        data-tip="{% trans 'Django Blog' %}"
+      >
+        <h1 class="relative">
+          <a href="/" class="btn btn-square btn-primary lg:btn-lg">
+            <div
+              class="bg-primary rounded-field text-primary-content absolute inset-0 size-full flex rotate-45 items-center justify-center"
+            >
+              <i
+                data-lucide="book-text"
+                class="-rotate-45 lg:size-8 2xl:size-10"
+              ></i>
+            </div>
+            <span class="sr-only">{% trans 'Django Blog' %}</span>
+          </a>
+        </h1>
+      </header>
+    </div>
+
+    <main class="card-body gap-6">
+      <h2 class="card-title text-primary">{%trans 'Logged Out' %}</h2>
+
+      <p>{% trans 'Thanks for spending some quality time with us today.' %}</p>
+    </main>
+  </section>
+</div>
+{% endblock %}

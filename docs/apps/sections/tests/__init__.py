@@ -1,1 +1,1 @@
-"""Tests for docs.section"""
+"""Tests for docs.sections"""

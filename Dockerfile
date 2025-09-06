@@ -20,13 +20,12 @@ RUN cp -r docs core
 # Configure settings
 RUN echo "INSTALLED_APPS += [" >> core/settings.py
 RUN echo "    'docs'," >> core/settings.py
-RUN echo "    'docs.apps.articles'," >> core/settings.py
-RUN echo "    'docs.apps.blog'," >> core/settings.py
-RUN echo "    'docs.apps.categories'," >> core/settings.py
+RUN echo "    'docs.api'," >> core/settings.py
 RUN echo "    'docs.apps.home'," >> core/settings.py
-RUN echo "    'docs.apps.links'," >> core/settings.py
+RUN echo "    'docs.apps.indexes'," >> core/settings.py
+RUN echo "    'docs.apps.pages'," >> core/settings.py
+RUN echo "    'docs.apps.sections'," >> core/settings.py
 RUN echo "    'docs.apps.tags'," >> core/settings.py
-RUN echo "    'docs.apps.users'," >> core/settings.py
 RUN echo "    'docs.cms'," >> core/settings.py
 RUN echo "    'docs.ui'," >> core/settings.py
 RUN echo "    'rest_wind'," >> core/settings.py

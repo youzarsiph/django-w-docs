@@ -7,6 +7,6 @@ from django.apps import AppConfig
 class DocsIndexConfig(AppConfig):
     """App Configuration for docs.apps.indexes"""
 
-    # label = "docs_indexes"
+    label = "docs_indexes"
     name = "docs.apps.indexes"
     default_auto_field = "django.db.models.BigAutoField"

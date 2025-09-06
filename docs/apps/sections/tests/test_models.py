@@ -1,4 +1,4 @@
-"""Tests for docs.section.models"""
+"""Tests for docs.sections.models"""
 
 from django.test import TestCase
 

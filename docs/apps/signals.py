@@ -4,8 +4,8 @@ from django.db.models.signals import pre_delete
 from wagtail.contrib.frontend_cache.utils import PurgeBatch
 from wagtail.signals import page_published
 
-from docs.apps.blog.models import Post
-from docs.apps.categories.models import Category
+from docs.apps.pages.models import DocsPage
+from docs.apps.sections.models import DocsSection
 
 
 def invalidate_index(sender, **kwargs):
@@ -23,9 +23,9 @@ def register_signal_receivers(sender):
     page_published.connect(invalidate_index, sender=sender)
 
 
-def register_category_signal_receivers():
-    register_signal_receivers(Category)
+def register_section_signal_receivers():
+    register_signal_receivers(DocsSection)
 
 
-def register_post_signal_receivers():
-    register_signal_receivers(Post)
+def register_page_signal_receivers():
+    register_signal_receivers(DocsPage)

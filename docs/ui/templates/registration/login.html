@@ -1,0 +1,62 @@
+{% extends 'ui/base.html' %}{% load i18n %}
+
+<!---->
+{% block title %}{{ block.super }} | {% trans 'Log in' %}{% endblock %}
+
+<!---->
+{% block content %}
+<div class="flex px-4 pb-20 pt-28 items-center justify-center">
+  <section
+    class="card card-sm w-full max-w-lg bg-base-200 shadow-xs md:card-md xl:card-lg 2xl:card-xl 2xl:max-w-xl"
+  >
+    <div class="mx-auto p-6">
+      <header
+        class="tooltip tooltip-bottom tooltip-primary tooltip-open"
+        data-tip="{% trans 'Django Blog' %}"
+      >
+        <h1 class="relative">
+          <a href="/" class="btn btn-square btn-primary lg:btn-lg">
+            <div
+              class="bg-primary rounded-field text-primary-content absolute inset-0 size-full flex rotate-45 items-center justify-center"
+            >
+              <i
+                data-lucide="book-text"
+                class="-rotate-45 lg:size-8 2xl:size-10"
+              ></i>
+            </div>
+            <span class="sr-only">{% trans 'Django Blog' %}</span>
+          </a>
+        </h1>
+      </header>
+    </div>
+
+    <main class="card-body gap-6">
+      <h2 class="card-title text-primary">{% trans 'Log in' %}</h2>
+
+      <p>{% trans 'Welcome, please login to continue.' %}</p>
+
+      <!---->
+      {% if next %}
+      <!---->
+      {% if user.is_authenticated %}
+      <div role="alert" class="alert alert-horizontal alert-warning">
+        <i data-lucide="triangle-alert" class="size-4 lg:size-6"></i>
+
+        <p>
+          {% blocktrans trimmed %}Your account doesn't have access to this page.
+          To proceed, please login with an account that has access.
+          <!---->
+          {% endblocktrans %}
+        </p>
+      </div>
+      <!---->
+      {% endif %}
+      <!---->
+      {% endif %}
+
+      <!---->
+      {% include 'docs/components/form.html' %}
+    </main>
+  </section>
+</div>
+{% endblock %}

@@ -34,13 +34,12 @@ jobs:
           # Configure settings
           echo "INSTALLED_APPS += [" >> core/settings.py
           echo "    'docs'," >> core/settings.py
-          echo "    'docs.apps.articles'," >> core/settings.py
-          echo "    'docs.apps.blog'," >> core/settings.py
-          echo "    'docs.apps.categories'," >> core/settings.py
+          echo "    'docs.api'," >> core/settings.py
           echo "    'docs.apps.home'," >> core/settings.py
-          echo "    'docs.apps.links'," >> core/settings.py
+          echo "    'docs.apps.indexes'," >> core/settings.py
+          echo "    'docs.apps.pages'," >> core/settings.py
+          echo "    'docs.apps.sections'," >> core/settings.py
           echo "    'docs.apps.tags'," >> core/settings.py
-          echo "    'docs.apps.users'," >> core/settings.py
           echo "    'docs.cms'," >> core/settings.py
           echo "    'docs.ui'," >> core/settings.py
           echo "    'rest_wind'," >> core/settings.py

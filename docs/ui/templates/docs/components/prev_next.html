@@ -1,0 +1,36 @@
+{% load docs i18n %}
+
+<div class="flex items-center justify-between gap-4">
+  {% if page.get_prev_sibling %}
+  <div
+    class="tooltip tooltip-right rtl:tooltip-left tooltip-primary mr-auto rtl:mr-0 rtl:ml-auto"
+    data-tip="{% trans 'Previous page' %}"
+  >
+    <a
+      href="{% page_url page.get_prev_sibling LANGUAGE_CODE %}"
+      class="btn btn-sm btn-soft btn-primary md:btn-md 2xl:btn-lg"
+    >
+      <i data-lucide="chevron-left" class="size-4 md:size-6 rtl:rotate-180"></i>
+      <span>{% trans 'Prev' %}</span>
+    </a>
+  </div>
+  {% endif %}
+  <!---->
+  {% if page.get_next_sibling %}
+  <div
+    class="tooltip tooltip-left rtl:tooltip-right tooltip-primary ml-auto rtl:ml-0 rtl:mr-auto"
+    data-tip="{% trans 'Next page' %}"
+  >
+    <a
+      href="{% page_url page.get_next_sibling LANGUAGE_CODE %}"
+      class="btn btn-sm btn-soft btn-primary md:btn-md 2xl:btn-lg"
+    >
+      <span>{% trans 'Next' %}</span>
+      <i
+        data-lucide="chevron-right"
+        class="size-4 md:size-6 rtl:rotate-180"
+      ></i>
+    </a>
+  </div>
+  {% endif %}
+</div>
