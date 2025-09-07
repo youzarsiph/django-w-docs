@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "django-w-docs"
-version = "0.1.4"
+version = "0.1.5"
 description = "A reusable documentation app powered by Python, Django, DRF, Wagtail CMS, TailwindCSS and DaisyUI."
 authors = ["Yousef Abu Shanab <josephyousef249@gmail.com>"]
 license = "MIT"
