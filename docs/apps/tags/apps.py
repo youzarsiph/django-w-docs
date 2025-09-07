@@ -7,6 +7,6 @@ from django.apps import AppConfig
 class TagsConfig(AppConfig):
     """App configuration for docs.apps.tags"""
 
-    # label = "docs_tags"
+    label = "docs_tags"
     name = "docs.apps.tags"
     default_auto_field = "django.db.models.BigAutoField"
