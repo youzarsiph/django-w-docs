@@ -27,7 +27,7 @@ class AbstractDocsPage(Page):
     )
     tags = ClusterTaggableManager(
         blank=True,
-        through="tags.Tag",
+        through="docs_tags.Tag",
         verbose_name=_("tags"),
         help_text=_("Tags"),
     )
