@@ -1,13 +1,11 @@
 {% extends 'docs/base.html' %}
-<!---->
-{% load i18n docs wagtailsearchpromotions_tags %}
 
 <!---->
-{% block title %}{{ block.super }} | {% trans 'Search' %}{% endblock %}
+{% load i18n wagtailcore_tags wagtailsearchpromotions_tags %}
 
 <!---->
 {% block content %}
-<div class="container mx-auto grid gap-8 pt-20 px-4">
+<div class="container grid gap-12 mx-auto px-4 py-20">
   <h1 class="text-3xl text-primary font-black lg:text-5xl">
     {% trans 'Search' %}
   </h1>
@@ -46,7 +44,7 @@
       role="article"
       class="relative card bg-base-300 hover:bg-base-200 card-sm md:card-md xl:card-lg 2xl:card-xl col-span-12 size-full shadow-sm md:col-span-6 lg:col-span-4 2xl:col-span-3"
     >
-      <a href="{% page_url page LANGUAGE_CODE %}" class="absolute inset-0">
+      <a href="{% pageurl page %}" class="absolute inset-0">
         <span class="sr-only">{% trans 'Read' %}</span>
       </a>
 
@@ -74,7 +72,7 @@
     <!---->
     {% if search_promotion.page %}
     <li>
-      <a href="{% page_url search_promotion.page LANGUAGE_CODE %}">
+      <a href="{% pageurl search_promotion.page %}">
         <h2>{{ search_promotion.page.title }}</h2>
         <p>{{ search_promotion.description }}</p>
       </a>

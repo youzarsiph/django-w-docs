@@ -1,12 +1,12 @@
-{% extends 'docs/base.html' %}{% load i18n docs wagtailcore_tags %}
+{% extends 'docs/base.html' %}{% load i18n wagtailcore_tags %}
 
 <!---->
 {% block content %}
-<section class="container flex flex-col gap-8 mx-auto px-4 py-20">
+<section class="container grid gap-12 mx-auto px-4 py-20">
   {% include 'docs/components/breadcrumbs.html' %}
 
   <div
-    class="mx-auto prose prose-sm prose-video:rounded-box xl:prose-lg 2xl:prose-xl prose-headings:text-primary prose-headings:font-serif rtl:prose-headings:font-kufi prose-img:rounded-box prose-img:w-full"
+    class="mx-auto prose prose-sm prose-video:rounded-box xl:prose-lg 2xl:prose-xl prose-headings:text-primary prose-img:rounded-box prose-img:w-full"
   >
     <h1>{{ index.title }}</h1>
 
@@ -19,7 +19,7 @@
       role="article"
       class="relative card bg-base-300 hover:bg-base-200 card-sm md:card-md xl:card-lg 2xl:card-xl col-span-12 size-full shadow-sm md:col-span-6 lg:col-span-4 2xl:col-span-3"
     >
-      <a href="{% page_url page LANGUAGE_CODE %}" class="absolute inset-0">
+      <a href="{% pageurl page %}" class="absolute inset-0">
         <span class="sr-only">{% trans 'Read' %}</span>
       </a>
 
@@ -32,20 +32,4 @@
     {% endfor %}
   </ol>
 </section>
-{% endblock %}
-
-<!---->
-{% block drawer_content %}
-<li>
-  <a href="{% page_url index.get_parent LANGUAGE_CODE %}">
-    <i data-lucide="arrow-left" class="size-4 md:size-6 rtl:rotate-180"></i>
-    {{ index.get_parent.title }}
-  </a>
-</li>
-{% for page in index.get_children %}
-<li>
-  <a href="{% page_url page LANGUAGE_CODE %}">{{ page.title }}</a>
-</li>
-{% endfor %}
-<!---->
 {% endblock %}

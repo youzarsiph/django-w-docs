@@ -1,24 +1,54 @@
-{% load i18n static docs wagtailuserbar %}
+{% load docs i18n static wagtailcore_tags wagtailuserbar %}
 <!DOCTYPE html>
 <html
   lang="{{ LANGUAGE_CODE }}"
   dir="{% if LANGUAGE_CODE == 'ar' %}rtl{% else %}ltr{% endif %}"
+  data-theme="{% block theme %}luxury{% endblock %}"
 >
   {% get_site_root as home %}
   <head>
     {% block head %}
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>{% block title %}{% trans 'Django Docs' %}{% endblock %}</title>
+    {% block title %}
+    <title>
+      {% trans 'Django Docs' %} | {% include 'docs/components/title.html' %}
+    </title>
+    {% endblock %}
+
+    <!---->
     {% block meta %}{% endblock %}
 
     <!---->
     {% block styles %}
     <link
+      href="{% static 'wagtail_blocks/css/styles.css' %}"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/daisyui@5"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
       href="{% static 'docs/css/styles.css' %}"
       rel="stylesheet"
       type="text/css"
     />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/styles/github-dark.min.css"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/highlight.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script>
+    <style>
+      figure > img {
+        height: 100%;
+        width: 100%;
+        filter: brightness(100%);
+      }
+    </style>
     {% endblock %}
     <!---->
 
@@ -46,7 +76,7 @@
                 <header
                   class="absolute inset-x-0 top-0 z-40 px-2 backdrop-blur-3xl lg:px-4"
                 >
-                  <nav class="navbar p-0">
+                  <nav class="navbar p-4">
                     <ol class="navbar-start gap-4">
                       <li
                         class="tooltip tooltip-right rtl:tooltip-left tooltip-primary z-10"
@@ -71,11 +101,11 @@
                       >
                         <h1 class="relative">
                           <a
-                            href="{% page_url home LANGUAGE_CODE %}"
+                            href="{% pageurl home %}"
                             class="btn btn-square btn-primary lg:btn-lg"
                           >
                             <div
-                              class="bg-primary rounded-field text-primary-content absolute inset-0 size-full flex rotate-45 items-center justify-center"
+                              class="btn btn-square btn-primary rotate-45 p-0 shadow-none lg:btn-lg"
                             >
                               <i
                                 data-lucide="book-text"
@@ -96,6 +126,7 @@
                     </ol>
 
                     <ol class="navbar-end gap-2">
+                      {% block navbar_end %}
                       <li
                         class="tooltip tooltip-left rtl:tooltip-right tooltip-primary"
                         data-tip="{% trans 'Search' %}"
@@ -109,7 +140,31 @@
                         </a>
                       </li>
 
-                      {% block navbar_end %}{% endblock %}
+                      {% include 'docs/components/theme.html' %}
+
+                      <li
+                        class="tooltip tooltip-left rtl:tooltip-right tooltip-primary"
+                        data-tip="{% trans 'Toggle theme' %}"
+                      >
+                        <label
+                          class="swap swap-rotate btn btn-square btn-soft btn-sm btn-primary md:btn-md 2xl:btn-lg"
+                        >
+                          <input
+                            type="checkbox"
+                            class="theme-controller"
+                            value="{% block toggle_theme %}silk{% endblock %}"
+                          />
+                          <i
+                            data-lucide="sun"
+                            class="swap-off size-4 lg:size-6"
+                          ></i>
+                          <i
+                            data-lucide="moon-star"
+                            class="swap-on size-4 lg:size-6"
+                          ></i>
+                        </label>
+                      </li>
+                      {% endblock %}
                     </ol>
                   </nav>
                 </header>
@@ -117,35 +172,100 @@
 
                 <!---->
                 {% block content %}
-                <div class="container grid gap-8 px-4 pt-20 mx-auto">
+                <div class="container flex flex-col gap-8 px-4 py-20 mx-auto">
                   <div
-                    class="hero bg-gradient-to-r from-emerald-500 to-sky-400 rounded-box"
+                    class="mx-auto prose prose-sm prose-video:rounded-box xl:prose-lg 2xl:prose-xl prose-headings:text-primary prose-img:rounded-box prose-img:w-full"
                   >
-                    <div class="hero-content text-white grid min-h-96">
-                      <h1 class="text-3xl font-black lg:text-7xl">
-                        {% trans 'Django Docs' %}
-                      </h1>
+                    <h1>{% trans 'Django Docs' %}</h1>
 
-                      <div class="flex items-center gap-4">
-                        <a
-                          href="https://github.com/youzarsiph/django-w-docs"
-                          class="btn btn-lg btn-primary"
-                        >
-                          {% trans 'Get started' %}
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div
-                    class="mx-auto prose prose-sm prose-video:rounded-box xl:prose-lg 2xl:prose-xl prose-headings:text-primary prose-headings:font-serif rtl:prose-headings:font-kufi prose-img:rounded-box prose-img:w-full"
-                  >
-                    <p class="lead">
+                    <p>
                       {% blocktrans trimmed %}A reusable documentation app
                       powered by Python, Django, DRF, Wagtail CMS, TailwindCSS
                       and DaisyUI.{% endblocktrans %}
                     </p>
+
+                    <pre><code>pip install django-w-docs</code></pre>
                   </div>
+
+                  <ol class="grid grid-cols-12 gap-4">
+                    <li
+                      role="article"
+                      class="card bg-base-100 hover:bg-base-200 border border-base-300 card-sm md:card-md xl:card-lg 2xl:card-xl col-span-12 size-full shadow-sm md:col-span-6 lg:col-span-4 2xl:col-span-3"
+                    >
+                      <a
+                        href="https://github.com/youzarsiph/django-w-docs#Get-started"
+                        class="absolute inset-0"
+                      >
+                        <span class="sr-only">{% trans 'Docs' %}</span>
+                      </a>
+
+                      <div class="card-body justify-end">
+                        <h2 class="card-title text-primary">
+                          <i
+                            data-lucide="book-text"
+                            class="size-4 md:size-6"
+                          ></i>
+                          {% trans 'Docs' %}
+                        </h2>
+
+                        <p class="grow-0">
+                          {% trans 'Get started with Django Docs' %}
+                        </p>
+                      </div>
+                    </li>
+                    <li
+                      role="article"
+                      class="card bg-base-100 hover:bg-base-200 border border-base-300 card-sm md:card-md xl:card-lg 2xl:card-xl col-span-12 size-full shadow-sm md:col-span-6 lg:col-span-4 2xl:col-span-3"
+                    >
+                      <a
+                        href="https://github.com/youzarsiph/django-w-docs#Contributing"
+                        class="absolute inset-0"
+                      >
+                        <span class="sr-only">{% trans 'Contribute' %}</span>
+                      </a>
+
+                      <div class="card-body justify-end">
+                        <h2 class="card-title text-primary">
+                          <i
+                            data-lucide="folder-git-2"
+                            class="size-4 md:size-6"
+                          ></i>
+                          {% trans 'Contribute' %}
+                        </h2>
+
+                        <p class="grow-0">
+                          {% blocktrans trimmed %}Please refer to our
+                          CONTRIBUTING guide{% endblocktrans %}
+                        </p>
+                      </div>
+                    </li>
+                    <li
+                      role="article"
+                      class="card bg-base-100 hover:bg-base-200 border border-base-300 card-sm md:card-md xl:card-lg 2xl:card-xl col-span-12 size-full shadow-sm md:col-span-6 lg:col-span-4 2xl:col-span-3"
+                    >
+                      <a
+                        href="https://github.com/youzarsiph/django-w-docs/issues"
+                        class="absolute inset-0"
+                      >
+                        <span class="sr-only">{% trans 'Support' %}</span>
+                      </a>
+
+                      <div class="card-body justify-end">
+                        <h2 class="card-title text-primary">
+                          <i
+                            data-lucide="heart-handshake"
+                            class="size-4 md:size-6"
+                          ></i>
+                          {% trans 'Support' %}
+                        </h2>
+
+                        <p class="grow-0">
+                          {% blocktrans trimmed %}For inquiries or support,
+                          please open an issue{% endblocktrans %}
+                        </p>
+                      </div>
+                    </li>
+                  </ol>
                 </div>
                 {% endblock %}
 
@@ -177,35 +297,66 @@
                 >
                   <h1 class="relative">
                     <a
-                      href="{% page_url home LANGUAGE_CODE %}"
+                      href="{% pageurl home %}"
                       class="btn btn-square btn-primary lg:btn-lg"
                     >
                       <div
-                        class="bg-primary rounded-field text-primary-content absolute inset-0 size-full flex rotate-45 items-center justify-center"
+                        class="btn btn-square btn-primary rotate-45 p-0 shadow-none lg:btn-lg"
                       >
                         <i
                           data-lucide="book-text"
                           class="-rotate-45 lg:size-8 2xl:size-10"
                         ></i>
                       </div>
-                      <span class="sr-only">{% trans 'Django Docs' %}</span>
+                      <span class="sr-only"> {% trans 'Django Docs' %} </span>
                     </a>
                   </h1>
                 </div>
                 {% endblock %}
 
-                <div
-                  class="tooltip tooltip-left rtl:tooltip-right hover:tooltip-error"
-                  data-tip="{% trans 'Close' %}"
-                >
-                  <label
-                    for="nav-drawer"
-                    aria-label="{% trans 'close sidebar' %}"
-                    class="btn btn-square btn-soft btn-sm btn-primary hover:btn-error md:btn-md 2xl:btn-lg"
+                <div class="flex items-center gap-2">
+                  <div
+                    class="tooltip tooltip-left tooltip-primary rtl:tooltip-right"
+                    data-tip="{% trans 'Repo' %}"
                   >
-                    <i data-lucide="x" class="size-4 md:size-6"></i>
-                    <span class="sr-only">{% trans 'Close' %}</span>
-                  </label>
+                    <a
+                      href="https://github.com/youzarsiph/django-w-docs"
+                      class="btn btn-square btn-soft btn-sm btn-primary md:btn-md 2xl:btn-lg"
+                    >
+                      <i
+                        data-lucide="folder-git-2"
+                        class="size-4 md:size-6"
+                      ></i>
+                      <span class="sr-only">{% trans 'Repo' %}</span>
+                    </a>
+                  </div>
+
+                  <div
+                    class="tooltip tooltip-left tooltip-primary rtl:tooltip-right"
+                    data-tip="{% trans 'Package' %}"
+                  >
+                    <a
+                      href="https://pypi.org/project/django-w-docs/"
+                      class="btn btn-square btn-soft btn-sm btn-primary md:btn-md 2xl:btn-lg"
+                    >
+                      <i data-lucide="package" class="size-4 md:size-6"></i>
+                      <span class="sr-only">{% trans 'Package' %}</span>
+                    </a>
+                  </div>
+
+                  <div
+                    class="tooltip tooltip-left rtl:tooltip-right hover:tooltip-error"
+                    data-tip="{% trans 'Close' %}"
+                  >
+                    <label
+                      for="nav-drawer"
+                      aria-label="{% trans 'close sidebar' %}"
+                      class="btn btn-square btn-soft btn-sm btn-primary hover:btn-error md:btn-md 2xl:btn-lg"
+                    >
+                      <i data-lucide="x" class="size-4 md:size-6"></i>
+                      <span class="sr-only">{% trans 'Close' %}</span>
+                    </label>
+                  </div>
                 </div>
               </header>
 
@@ -240,39 +391,18 @@
               </form>
             </div>
 
-            <ol class="menu 2xl:menu-lg size-full grow gap-2 overflow-y-auto">
+            <ul class="menu 2xl:menu-lg size-full grow gap-2 overflow-y-auto">
               {% block drawer_content %}
-              <li>
-                <a href="{% page_url home LANGUAGE_CODE %}">
-                  <i data-lucide="home" class="size-4 md:size-6"></i>
-                  {% trans 'Home' %}
-                </a>
-              </li>
-              <li>
-                <a href="https://pypi.org/project/django-w-docs/">
-                  <i data-lucide="package" class="size-4 md:size-6"></i>
-                  {% trans 'Package' %}
-                </a>
-              </li>
-              <li>
-                <a href="https://github.com/youzarsiph/django-w-docs">
-                  <i data-lucide="folder-git-2" class="size-4 md:size-6"></i>
-                  {% trans 'Repo' %}
-                </a>
-              </li>
-              {% for page in home.get_children %}
-              <li>
-                <a href="{% page_url page LANGUAGE_CODE %}">{{ page }}</a>
-              </li>
-              {% endfor %}
+              <!---->
+              {% include "docs/components/tree.html" with nodes=home.get_children %}
               <!---->
               {% endblock %}
-            </ol>
+            </ul>
           </div>
 
-          <ol class="grid gap-4 p-4">
+          <ul class="grid gap-4 p-4">
             {% block drawer_bottom %}{% endblock %}
-          </ol>
+          </ul>
         </section>
       </section>
     </div>
@@ -280,6 +410,8 @@
     <script src="https://unpkg.com/lucide@latest"></script>
     <script>
       lucide.createIcons();
+      hljs.highlightAll();
+      const btns = new ClipboardJS(".btn-copy");
     </script>
   </body>
 </html>

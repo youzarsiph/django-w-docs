@@ -8,10 +8,13 @@
   >
     <a
       href="{% page_url page.get_prev_sibling LANGUAGE_CODE %}"
-      class="btn btn-sm btn-soft btn-primary md:btn-md 2xl:btn-lg"
+      class="btn btn-soft btn-primary lg:btn-lg 2xl:btn-xl"
     >
       <i data-lucide="chevron-left" class="size-4 md:size-6 rtl:rotate-180"></i>
-      <span>{% trans 'Prev' %}</span>
+      <div class="grid place-items-start">
+        <span class="text-xs">{% trans 'Prev' %}</span>
+        <span class="text-sm">{{ page.get_prev_sibling }}</span>
+      </div>
     </a>
   </div>
   {% endif %}
@@ -23,9 +26,12 @@
   >
     <a
       href="{% page_url page.get_next_sibling LANGUAGE_CODE %}"
-      class="btn btn-sm btn-soft btn-primary md:btn-md 2xl:btn-lg"
+      class="btn btn-soft btn-primary lg:btn-lg 2xl:btn-xl"
     >
-      <span>{% trans 'Next' %}</span>
+      <div class="grid place-items-start">
+        <span class="text-sm">{{ page.get_next_sibling }}</span>
+        <span>{% trans 'Next' %}</span>
+      </div>
       <i
         data-lucide="chevron-right"
         class="size-4 md:size-6 rtl:rotate-180"

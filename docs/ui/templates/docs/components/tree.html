@@ -1,0 +1,22 @@
+{% for node in nodes %}
+<!---->
+{% if node.content_type.model == 'docspage' %}
+<li>
+  <a href="{{ node.url }}">{{ node.title }}</a>
+</li>
+{% elif node.content_type.model == 'docssection' %}
+<li>
+  <details>
+    <summary class="group">{{ node.title }}</summary>
+    <ul>
+      {% include "docs/components/tree.html" with nodes=node.get_children %}
+    </ul>
+  </details>
+</li>
+{% elif node.content_type.model == 'docsindex' %}
+<!---->
+{% include "docs/components/tree.html" with nodes=node.get_children %}
+<!---->
+{% endif %}
+<!---->
+{% endfor %}

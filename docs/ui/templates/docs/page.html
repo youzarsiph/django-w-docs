@@ -1,30 +1,30 @@
-{% extends 'docs/base.html' %}{% load i18n docs %}
+{% extends 'docs/base.html' %}{% load i18n wagtailcore_tags %}
 
 <!---->
 {% block content %}
-<section class="container flex flex-col gap-8 mx-auto px-4 py-20">
+<section class="container grid gap-12 mx-auto px-4 py-20">
   {% include 'docs/components/breadcrumbs.html' %}
 
   <div
-    class="mx-auto prose prose-sm prose-video:rounded-box xl:prose-lg 2xl:prose-xl prose-headings:text-primary prose-headings:font-serif rtl:prose-headings:font-kufi prose-img:rounded-box prose-img:w-full"
+    class="mx-auto prose prose-sm prose-video:rounded-box xl:prose-lg 2xl:prose-xl prose-headings:text-primary prose-img:rounded-box prose-img:w-full"
   >
     <h1>{{ page.title }}</h1>
 
-    <p class="lead">{{ page.description }}</p>
+    <p class="lead">{{ page.headline }}</p>
 
     {{ page.content }}
   </div>
 
+  <div class="flex mx-auto flex-wrap items-center gap-4">
+    {% for tag in page.tags.all %}
+    <span
+      class="badge {% cycle 'badge-primary' 'badge-secondary' 'badge-success' 'badge-info' 'badge-warning' 'badge-error' %}"
+    >
+      {{ tag }}
+    </span>
+    {% endfor %}
+  </div>
+
   {% include 'docs/components/prev_next.html' %}
 </section>
-{% endblock %}
-
-<!---->
-{% block drawer_content %}
-<li>
-  <a href="{% page_url page.get_parent LANGUAGE_CODE %}">
-    <i data-lucide="arrow-left" class="size-4 md:size-6 rtl:rotate-180"></i>
-    {{ page.get_parent.title }}
-  </a>
-</li>
 {% endblock %}

@@ -4,7 +4,7 @@ from django.apps import AppConfig
 
 
 # Create your config here.
-class TheCertainNewUIConfig(AppConfig):
+class DocsUIConfig(AppConfig):
     """App configuration for docs.ui"""
 
     name = "docs.ui"

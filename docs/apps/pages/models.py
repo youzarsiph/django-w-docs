@@ -9,7 +9,7 @@ from wagtail.fields import StreamField
 from wagtail.models import Page
 from wagtail.search import index
 
-from docs.cms.blocks import MediaBlock
+from docs.cms.blocks import AllBlocks
 
 
 class AbstractDocsPage(Page):
@@ -21,7 +21,7 @@ class AbstractDocsPage(Page):
         help_text=_("Page description"),
     )
     content = StreamField(
-        MediaBlock(),
+        AllBlocks(),
         verbose_name=_("content"),
         help_text=_("Page content"),
     )

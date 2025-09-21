@@ -30,6 +30,7 @@ RUN echo "    'docs.cms'," >> core/settings.py
 RUN echo "    'docs.ui'," >> core/settings.py
 RUN echo "    'rest_wind'," >> core/settings.py
 RUN echo "    'rest_framework'," >> core/settings.py
+RUN echo "    'wagtail_blocks'," >> core/settings.py
 RUN echo "    'wagtail.contrib.search_promotions'," >> core/settings.py
 RUN echo "    'wagtail.contrib.forms'," >> core/settings.py
 RUN echo "    'wagtail.contrib.redirects'," >> core/settings.py

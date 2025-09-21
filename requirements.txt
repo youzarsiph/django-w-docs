@@ -3,3 +3,4 @@ django
 djangorestframework
 drf-restwind
 wagtail
+wagtail-tw-blocks
