@@ -42,13 +42,6 @@
     />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/highlight.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.11/dist/clipboard.min.js"></script>
-    <style>
-      figure > img {
-        height: 100%;
-        width: 100%;
-        filter: brightness(100%);
-      }
-    </style>
     {% endblock %}
     <!---->
 
@@ -58,7 +51,7 @@
   <body class="font-sans antialiased">
     {% wagtailuserbar %}
 
-    <div class="drawer">
+    <div class="drawer lg:drawer-open">
       <input id="nav-drawer" type="checkbox" class="drawer-toggle" />
 
       <section id="content" class="drawer-content">
@@ -79,7 +72,7 @@
                   <nav class="navbar p-4">
                     <ol class="navbar-start gap-4">
                       <li
-                        class="tooltip tooltip-right rtl:tooltip-left tooltip-primary z-10"
+                        class="tooltip tooltip-right rtl:tooltip-left tooltip-primary z-10 lg:hidden"
                         data-tip="{% trans 'Open drawer' %}"
                       >
                         <label
@@ -96,7 +89,7 @@
 
                       {% block branding %}
                       <li
-                        class="tooltip tooltip-right rtl:tooltip-left tooltip-primary"
+                        class="tooltip tooltip-right rtl:tooltip-left tooltip-primary lg:hidden"
                         data-tip="{% trans 'Django Docs' %}"
                       >
                         <h1 class="relative">
@@ -179,12 +172,54 @@
                     <h1>{% trans 'Django Docs' %}</h1>
 
                     <p>
-                      {% blocktrans trimmed %}A reusable documentation app
-                      powered by Python, Django, DRF, Wagtail CMS, TailwindCSS
-                      and DaisyUI.{% endblocktrans %}
+                      {% blocktrans trimmed %}A reusable, production-ready
+                      documentation application built with Python, Django,
+                      Django REST Framework, and Wagtail CMS, styled with
+                      Tailwind CSS and daisyUI. It comes with sensible defaults,
+                      modern theming, and clean APIs—helping you launch
+                      structured, searchable documentation quickly and scale it
+                      with confidence.{% endblocktrans %}
                     </p>
 
                     <pre><code>pip install django-w-docs</code></pre>
+
+                    <h2>{% trans 'Use Cases' %}</h2>
+                    <ul>
+                      <li>
+                        <strong>
+                          {% trans 'Product docs & API reference' %}:
+                        </strong>
+                        {% blocktrans trimmed %}Guides, FAQs, and endpoint
+                        documentation with search and tags.{% endblocktrans %}
+                      </li>
+                      <li>
+                        <strong>{% trans 'Knowledge base' %}:</strong>
+                        {% blocktrans trimmed %}Self-serve help center to reduce
+                        support load.{% endblocktrans %}
+                      </li>
+                      <li>
+                        <strong>{% trans 'Internal handbook' %}:</strong>
+                        {% blocktrans trimmed %}Onboarding, SOPs, and runbooks
+                        with role-based access.{% endblocktrans %}
+                      </li>
+                      <li>
+                        <strong>
+                          {% trans 'Release notes & policies' %}:
+                        </strong>
+                        {% blocktrans trimmed %}Publish updates, policies, and
+                        compliance docs.{% endblocktrans %}
+                      </li>
+                      <li>
+                        <strong>{% trans 'Multilingual content' %}:</strong>
+                        {% blocktrans trimmed %}Maintain parity across languages
+                        with Wagtail i18n.{% endblocktrans %}
+                      </li>
+                      <li>
+                        <strong>{% trans 'In‑product help' %}:</strong>
+                        {% blocktrans trimmed %}Surface contextual docs via the
+                        REST API.{% endblocktrans %}
+                      </li>
+                    </ul>
                   </div>
 
                   <ol class="grid grid-cols-12 gap-4">
@@ -315,6 +350,7 @@
                 {% endblock %}
 
                 <div class="flex items-center gap-2">
+                  {% block links %}
                   <div
                     class="tooltip tooltip-left tooltip-primary rtl:tooltip-right"
                     data-tip="{% trans 'Repo' %}"
@@ -343,9 +379,10 @@
                       <span class="sr-only">{% trans 'Package' %}</span>
                     </a>
                   </div>
+                  {% endblock %}
 
                   <div
-                    class="tooltip tooltip-left rtl:tooltip-right hover:tooltip-error"
+                    class="tooltip tooltip-left rtl:tooltip-right hover:tooltip-error lg:hidden"
                     data-tip="{% trans 'Close' %}"
                   >
                     <label
