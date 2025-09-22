@@ -61,10 +61,10 @@ pip install django-w-docs
 INSTALLED_APPS = [
     "docs",
     "docs.api",              # Optional: REST API
-    "docs.apps.articles",
-    "docs.apps.categories",
-    "docs.apps.home",        # Optional: if your project includes a Home model ('home.Home')
+    "docs.apps.home",
     "docs.apps.indexes",
+    "docs.apps.pages",        # Optional: if your project includes a Home model ('home.Home')
+    "docs.apps.sections",
     "docs.apps.tags",
     "docs.cms",
     "docs.ui",

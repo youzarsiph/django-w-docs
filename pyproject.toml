@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "django-w-docs"
-version = "1.0.0"
+version = "1.0.1"
 description = "A reusable documentation app powered by Python, Django, DRF, Wagtail CMS, TailwindCSS and DaisyUI."
 authors = ["Yousef Abu Shanab <josephyousef249@gmail.com>"]
 license = "MIT"
@@ -16,7 +16,7 @@ django = ">=5.2.1"
 djangorestframework = ">=3.16.0"
 drf-restwind = ">=0.2.0"
 wagtail = ">=7.0"
-wagtail-tw-blocks = ">=0.2.1"
+wagtail-tw-blocks = ">=0.2.2"
 
 [tool.poetry.group.dev.dependencies]
 django-debug-toolbar = ">=6.0.0"

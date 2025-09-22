@@ -29,7 +29,7 @@ class SearchView(ListView):
         }
 
     def get_search_results(self):
-        """Search news articles and return results"""
+        """Search pages and return results"""
 
         queryset = self.get_queryset()
         search_query = self.request.GET.get("search", None)

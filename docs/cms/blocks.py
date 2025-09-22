@@ -38,3 +38,6 @@ class AllBlocks(MediaBlock):
     steps = wagtail_blocks.StepsBlock(help_text=_("Steps"))
     timeline = wagtail_blocks.TimelineBlock(help_text=_("Timeline"))
     toast = wagtail_blocks.ToastBlock(help_text=_("Toast"))
+    browser = wagtail_blocks.BrowserMockupBlock(help_text=_("Browser mockup"))
+    code_mockup = wagtail_blocks.CodeMockupBlock(help_text=_("Code mockup"))
+    phone = wagtail_blocks.PhoneMockupBlock(help_text=_("Phone mockup"))
