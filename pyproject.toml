@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "django-w-docs"
-version = "1.0.2"
+version = "1.0.3"
 description = "a reusable, production-ready documentation application built with Python, Django, Django REST Framework, and Wagtail CMS, styled with Tailwind CSS and daisyUI. It comes with sensible defaults, modern theming, and clean APIs—helping you launch structured, searchable documentation quickly and scale it with confidence."
 authors = ["Yousef Abu Shanab <josephyousef249@gmail.com>"]
 license = "MIT"

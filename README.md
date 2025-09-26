@@ -17,6 +17,12 @@
 
 ---
 
+## Demo
+
+[![Demo](https://img.youtube.com/vi/Ex1O9G6j2-M/maxresdefault.jpg)](https://youtu.be/Ex1O9G6j2-M)
+
+---
+
 ## Key features
 
 - **Full CMS:** Wagtail-powered editorial interface with pages, media, search, and governance.  
@@ -61,9 +67,9 @@ pip install django-w-docs
 INSTALLED_APPS = [
     "docs",
     "docs.api",              # Optional: REST API
-    "docs.apps.home",
+    "docs.apps.home",        # Optional: if your project includes a Home model ('home.Home')
     "docs.apps.indexes",
-    "docs.apps.pages",        # Optional: if your project includes a Home model ('home.Home')
+    "docs.apps.pages",
     "docs.apps.sections",
     "docs.apps.tags",
     "docs.cms",
