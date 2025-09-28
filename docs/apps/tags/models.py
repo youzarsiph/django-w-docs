@@ -14,3 +14,13 @@ class Tag(TaggedItemBase):
         related_name="tagged_items",
         on_delete=models.CASCADE,
     )
+
+
+class FromTag(TaggedItemBase):
+    """Through model for defining m2m rel between FromPages and Tags"""
+
+    content_object = ParentalKey(
+        "docs_pages.FromPage",
+        related_name="tagged_items",
+        on_delete=models.CASCADE,
+    )

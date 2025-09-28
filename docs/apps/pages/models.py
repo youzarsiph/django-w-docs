@@ -3,10 +3,12 @@
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 from modelcluster.contrib.taggit import ClusterTaggableManager
-from wagtail.admin.panels import FieldPanel
+from modelcluster.fields import ParentalKey
+from wagtail.fields import RichTextField
+from wagtail.admin.panels import FieldPanel, FieldRowPanel, InlinePanel, MultiFieldPanel
 from wagtail.api import APIField
+from wagtail.contrib.forms.models import AbstractEmailForm, AbstractFormField, Page
 from wagtail.fields import StreamField
-from wagtail.models import Page
 from wagtail.search import index
 
 from docs.cms.blocks import AllBlocks
@@ -58,3 +60,53 @@ class DocsPage(AbstractDocsPage):
     """Docs pages"""
 
     template = "docs/page.html"
+
+
+class FormField(AbstractFormField):
+    job = ParentalKey(
+        "docs_pages.FromPage",
+        on_delete=models.CASCADE,
+        related_name="form_fields",
+    )
+
+
+class AbstractFromPage(AbstractEmailForm, AbstractDocsPage):
+    """Base class for extension"""
+
+    message = RichTextField(
+        verbose_name=_("message"),
+        help_text=_("Message to show after submitting form"),
+    )
+    tags = ClusterTaggableManager(
+        blank=True,
+        through="docs_tags.FromTag",
+        verbose_name=_("tags"),
+        help_text=_("Tags"),
+    )
+
+    parent_page_types = ["docs_indexes.DocsIndex", "docs_sections.DocsSection"]
+    content_panels = AbstractEmailForm.content_panels + [
+        FieldPanel("description"),
+        FieldPanel("content"),
+        FieldPanel("tags"),
+        MultiFieldPanel(
+            [
+                FieldPanel("subject"),
+                FieldRowPanel([FieldPanel("from_address"), FieldPanel("to_address")]),
+            ],
+            _("Email"),
+        ),
+        InlinePanel("form_fields"),
+        FieldPanel("message"),
+    ]
+
+    class Meta(Page.Meta):
+        """Meta data"""
+
+        abstract = True
+
+
+class FromPage(AbstractFromPage):
+    """From page"""
+
+    template = "docs/form_page.html"

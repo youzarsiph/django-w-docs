@@ -21,7 +21,11 @@ class AbstractDocsIndex(Page):
 
     context_object_name = "index"
     parent_page_types = ["home.Home"]
-    subpage_types = ["docs_sections.DocsSection", "docs_pages.DocsPage"]
+    subpage_types = [
+        "docs_sections.DocsSection",
+        "docs_pages.DocsPage",
+        "docs_pages.FromPage",
+    ]
 
     api_fields = [APIField("content")]
     content_panels = Page.content_panels + [FieldPanel("content")]

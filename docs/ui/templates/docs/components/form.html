@@ -23,7 +23,10 @@
     method="{{ method|default:'post' }}"
     class="grid gap-4"
   >
-    {% if csrf|default_if_none:True %}{% csrf_token %}{% endif %}{{ form }}
+    {% if csrf|default_if_none:True %}{% csrf_token %}{% endif %}
+
+    <!---->
+    {{ form }}
 
     <button type="submit" class="btn btn-primary">{% trans 'Submit' %}</button>
   </form>
@@ -44,25 +47,36 @@
   // Style inputs
   document
     .querySelectorAll("form > div > input")
-    .forEach((e) => e.classList.add("input", "input-primary", "w-full"));
+    .forEach((e) =>
+      e.classList.add("input", "input-primary", "w-full", "validator")
+    );
   document
     .querySelectorAll("form > div > input[type=checkbox]")
     .forEach((e) => {
-      e.classList.remove("input", "w-full");
+      e.classList.remove("input", "input-primary", "w-full");
       e.classList.add("checkbox", "checkbox-primary");
     });
   document.querySelectorAll("form > div > input[type=radio]").forEach((e) => {
-    e.classList.remove("input", "w-full");
+    e.classList.remove("input", "input-primary", "w-full");
     e.classList.add("radio", "radio-primary");
   });
   document.querySelectorAll("form > div > input[type=file]").forEach((e) => {
-    e.classList.remove("input");
-    e.classList.add("file-input");
+    e.classList.remove("input", "input-primary");
+    e.classList.add("file-input", "file-input-primary");
   });
   document
     .querySelectorAll("form > div > textarea")
-    .forEach((e) => e.classList.add("textarea", "textarea-primary", "w-full"));
+    .forEach((e) =>
+      e.classList.add("textarea", "textarea-primary", "w-full", "validator")
+    );
   document
     .querySelectorAll("form > div > select")
-    .forEach((e) => e.classList.add("select", "select-primary", "w-full"));
+    .forEach((e) =>
+      e.classList.add("select", "select-primary", "w-full", "validator")
+    );
+
+  // Style error lists
+  document
+    .querySelectorAll("form > div > .errorlist")
+    .forEach((e) => e.classList.add("validator-hint", "text-error", "visible"));
 </script>

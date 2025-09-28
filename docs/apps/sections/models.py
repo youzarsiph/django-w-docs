@@ -27,7 +27,11 @@ class AbstractDocsSection(Page):
 
     context_object_name = "section"
     parent_page_types = ["docs_indexes.DocsIndex", "docs_sections.DocsSection"]
-    subpage_types = ["docs_pages.DocsPage", "docs_sections.DocsSection"]
+    subpage_types = [
+        "docs_pages.DocsPage",
+        "docs_pages.FromPage",
+        "docs_sections.DocsSection",
+    ]
 
     api_fields = [APIField("description"), APIField("content")]
     content_panels = Page.content_panels + [

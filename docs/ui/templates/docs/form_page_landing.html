@@ -1,0 +1,13 @@
+{% extends 'docs/page.html' %}{% load i18n wagtailcore_tags %}
+
+<!---->
+{% block form %}
+<section class="not-prose grid gap-4">
+  <div role="alert" class="alert alert-soft alert-success">
+    <div class="flex items-center gap-2">
+      <i data-lucide="check-circle2" class="size-4 lg:size-6"></i>
+      <p>{{ page.message|richtext }}</p>
+    </div>
+  </div>
+</section>
+{% endblock %}
