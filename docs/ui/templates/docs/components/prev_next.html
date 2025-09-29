@@ -1,4 +1,4 @@
-{% load docs i18n %}
+{% load wagtailcore_tags i18n %}
 
 <div class="flex items-center justify-between gap-4">
   {% if page.get_prev_sibling %}
@@ -7,7 +7,7 @@
     data-tip="{% trans 'Previous page' %}"
   >
     <a
-      href="{% page_url page.get_prev_sibling LANGUAGE_CODE %}"
+      href="{% pageurl page.get_prev_sibling %}"
       class="btn btn-soft btn-primary lg:btn-lg 2xl:btn-xl"
     >
       <i data-lucide="chevron-left" class="size-4 md:size-6 rtl:rotate-180"></i>
@@ -25,7 +25,7 @@
     data-tip="{% trans 'Next page' %}"
   >
     <a
-      href="{% page_url page.get_next_sibling LANGUAGE_CODE %}"
+      href="{% pageurl page.get_next_sibling %}"
       class="btn btn-soft btn-primary lg:btn-lg 2xl:btn-xl"
     >
       <div class="grid place-items-end">
