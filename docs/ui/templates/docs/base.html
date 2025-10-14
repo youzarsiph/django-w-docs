@@ -399,12 +399,10 @@
 
               <form
                 method="get"
-                class="join w-full"
+                class="w-full"
                 action="{% url 'docs:search' %}"
               >
-                <label
-                  class="join-item w-full bg-transparent input input-primary"
-                >
+                <label class="w-full bg-transparent input input-primary">
                   <i
                     data-lucide="search"
                     class="size-4 text-primary md:size-6"
@@ -417,21 +415,14 @@
                     placeholder="{% trans 'Search' %}"
                   />
                 </label>
-
-                <button
-                  type="submit"
-                  class="btn join-item btn-square btn-soft btn-primary"
-                >
-                  <i data-lucide="check-circle2" class="size-4 md:size-6"></i>
-                  <span class="sr-only">{% trans 'Search' %}</span>
-                </button>
               </form>
             </div>
 
             <ul class="menu 2xl:menu-lg size-full grow gap-2 overflow-y-auto">
               {% block drawer_content %}
               <!---->
-              {% include "docs/components/tree.html" with nodes=home.get_children %}
+              {% include "docs/components/tree.html" with
+              nodes=home.get_children %}
               <!---->
               {% endblock %}
             </ul>

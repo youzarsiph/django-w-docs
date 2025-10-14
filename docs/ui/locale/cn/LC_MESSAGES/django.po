@@ -11,131 +11,130 @@ msgstr ""
 "POT-Creation-Date: 2025-10-10 10:48-0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
+"Language-Team: Chinese <LL@li.org>\n"
+"Language: zh_CN\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
-"&& n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
 
 #: .\docs\apps\indexes\models.py:18 .\docs\apps\pages\models.py:27
 #: .\docs\apps\sections\models.py:24
 msgid "content"
-msgstr "المحتوى"
+msgstr "内容"
 
 #: .\docs\apps\indexes\models.py:19 .\docs\apps\pages\models.py:28
 #: .\docs\apps\sections\models.py:25
 msgid "Page content"
-msgstr "محتوى الصفحة"
+msgstr "页面内容"
 
 #: .\docs\apps\pages\models.py:22 .\docs\apps\sections\models.py:19
 msgid "description"
-msgstr "الوصف"
+msgstr "描述"
 
 #: .\docs\apps\pages\models.py:23 .\docs\apps\sections\models.py:20
 msgid "Page description"
-msgstr "وصف الصفحة"
+msgstr "页面描述"
 
 #: .\docs\apps\pages\models.py:33 .\docs\apps\pages\models.py:83
 msgid "tags"
-msgstr "وسوم"
+msgstr "标签"
 
 #: .\docs\apps\pages\models.py:34 .\docs\apps\pages\models.py:84
 msgid "Tags"
-msgstr "وسوم"
+msgstr "标签"
 
 #: .\docs\apps\pages\models.py:77
 msgid "message"
-msgstr "رسالة"
+msgstr "消息"
 
 #: .\docs\apps\pages\models.py:78
 msgid "Message to show after submitting form"
-msgstr "رسالة لإظهارها بعد إرسال النموذج"
+msgstr "表单提交后显示的消息"
 
 #: .\docs\apps\pages\models.py:97
 msgid "Email"
-msgstr "البريد الإلكتروني"
+msgstr "电子邮箱"
 
 #: .\docs\cms\blocks.py:14
 msgid "Quote"
-msgstr "اقتباس"
+msgstr "引文"
 
 #: .\docs\cms\blocks.py:15
 msgid "Rich Text"
-msgstr "نص منسّق"
+msgstr "富文本"
 
 #: .\docs\cms\blocks.py:21
 msgid "Video"
-msgstr "فيديو"
+msgstr "视频"
 
 #: .\docs\cms\blocks.py:22
 msgid "Image"
-msgstr "صورة"
+msgstr "图片"
 
 #: .\docs\cms\blocks.py:23
 msgid "Document"
-msgstr "مستند"
+msgstr "文档"
 
 #: .\docs\cms\blocks.py:29
 msgid "Code"
-msgstr "كود"
+msgstr "代码"
 
 #: .\docs\cms\blocks.py:30
 msgid "Accordion"
-msgstr "أكورديون"
+msgstr "手风琴"
 
 #: .\docs\cms\blocks.py:31
 msgid "Alert"
-msgstr "تنبيه"
+msgstr "警报"
 
 #: .\docs\cms\blocks.py:32
 msgid "Carousel"
-msgstr "عرض شرائح"
+msgstr "轮播"
 
 #: .\docs\cms\blocks.py:33
 msgid "Hover gallery"
-msgstr "معرض عند المرور"
+msgstr "悬停图库"
 
 #: .\docs\cms\blocks.py:34
 msgid "Diff"
-msgstr "عرض الفروقات"
+msgstr "差异对比"
 
 #: .\docs\cms\blocks.py:35
 msgid "FAB"
-msgstr "زر عائم"
+msgstr "悬浮操作按钮"
 
 #: .\docs\cms\blocks.py:36
 msgid "List"
-msgstr "قائمة"
+msgstr "列表"
 
 #: .\docs\cms\blocks.py:37
 msgid "Tabs"
-msgstr "تبويبات"
+msgstr "选项卡"
 
 #: .\docs\cms\blocks.py:38
 msgid "Steps"
-msgstr "خطوات"
+msgstr "步骤"
 
 #: .\docs\cms\blocks.py:39
 msgid "Timeline"
-msgstr "الجدول الزمني"
+msgstr "时间线"
 
 #: .\docs\cms\blocks.py:40
 msgid "Toast"
-msgstr "إشعار منبثق"
+msgstr "轻提示"
 
 #: .\docs\cms\blocks.py:41
 msgid "Browser mockup"
-msgstr "محاكاة المتصفح"
+msgstr "浏览器模型"
 
 #: .\docs\cms\blocks.py:42
 msgid "Code mockup"
-msgstr "محاكاة الكود"
+msgstr "代码模型"
 
 #: .\docs\cms\blocks.py:43
 msgid "Phone mockup"
-msgstr "محاكاة الهاتف"
+msgstr "手机模型"
 
 #: .\docs\ui\templates\docs\base.html:15 .\docs\ui\templates\docs\base.html:93
 #: .\docs\ui\templates\docs\base.html:109
@@ -148,16 +147,16 @@ msgstr "محاكاة الهاتف"
 #: .\docs\ui\templates\registration\login.html:27
 #: .\docs\ui\templates\rest_framework\api.html:4
 msgid "Django Docs"
-msgstr "وثائق جانغو"
+msgstr "Django 文档"
 
 #: .\docs\ui\templates\docs\base.html:76 .\docs\ui\templates\docs\base.html:85
 msgid "Open drawer"
-msgstr "فتح الدرج"
+msgstr "打开抽屉"
 
 #: .\docs\ui\templates\docs\base.html:80 .\docs\ui\templates\docs\base.html:318
 #: .\docs\ui\templates\docs\base.html:390
 msgid "close sidebar"
-msgstr "إغلاق الشريط الجانبي"
+msgstr "关闭侧边栏"
 
 #: .\docs\ui\templates\docs\base.html:125
 #: .\docs\ui\templates\docs\base.html:132
@@ -166,11 +165,11 @@ msgstr "إغلاق الشريط الجانبي"
 #: .\docs\ui\templates\docs\search.html:10
 #: .\docs\ui\templates\docs\search.html:27
 msgid "Search"
-msgstr "بحث"
+msgstr "搜索"
 
 #: .\docs\ui\templates\docs\base.html:140
 msgid "Toggle theme"
-msgstr "تبديل السمة"
+msgstr "切换主题"
 
 #: .\docs\ui\templates\docs\base.html:175
 msgid ""
@@ -180,228 +179,228 @@ msgid ""
 "helping you launch structured, searchable documentation quickly and scale it "
 "with confidence."
 msgstr ""
-"تطبيق توثيق قابل لإعادة الاستخدام وجاهز للإنتاج، مبني باستخدام Python وDjango وDjango REST Framework وWagtail CMS، ومصمم باستخدام Tailwind CSS وdaisyUI. يأتي بإعدادات افتراضية معقولة، وسمات حديثة، وواجهات برمجة تطبيقات نظيفة—ما يساعدك على إطلاق توثيق منظّم وقابلًا للبحث بسرعة وتوسيعه بثقة."
+"一款可复用、可用于生产的文档应用，使用 Python、Django、Django REST Framework 和 Wagtail CMS 构建，并以 Tailwind CSS 与 daisyUI 进行样式设计。它提供合理的默认设置、现代化主题和干净的 API——帮助你快速上线结构化、可搜索的文档，并自信地进行扩展。"
 
 #: .\docs\ui\templates\docs\base.html:186
 msgid "Use Cases"
-msgstr "حالات الاستخدام"
+msgstr "使用场景"
 
 #: .\docs\ui\templates\docs\base.html:190
 msgid "Product docs & API reference"
-msgstr "وثائق المنتج ومرجع واجهة البرمجة"
+msgstr "产品文档与 API 参考"
 
 #: .\docs\ui\templates\docs\base.html:192
 msgid "Guides, FAQs, and endpoint documentation with search and tags."
-msgstr "أدلة وأسئلة شائعة ووثائق نقاط النهاية مع البحث والوسوم."
+msgstr "带有搜索与标签的指南、常见问题与端点文档。"
 
 #: .\docs\ui\templates\docs\base.html:196
 msgid "Knowledge base"
-msgstr "قاعدة معرفة"
+msgstr "知识库"
 
 #: .\docs\ui\templates\docs\base.html:197
 msgid "Self-serve help center to reduce support load."
-msgstr "مركز مساعدة ذاتي لتقليل عبء الدعم."
+msgstr "自助式帮助中心，降低支持负担。"
 
 #: .\docs\ui\templates\docs\base.html:201
 msgid "Internal handbook"
-msgstr "دليل داخلي"
+msgstr "内部手册"
 
 #: .\docs\ui\templates\docs\base.html:202
 msgid "Onboarding, SOPs, and runbooks with role-based access."
-msgstr "التهيئة، وإجراءات التشغيل القياسية، وكتيبات التنفيذ مع وصول قائم على الأدوار."
+msgstr "入职、标准作业流程（SOP）与运行手册，基于角色访问控制。"
 
 #: .\docs\ui\templates\docs\base.html:207
 msgid "Release notes & policies"
-msgstr "ملاحظات الإصدار والسياسات"
+msgstr "发行说明与政策"
 
 #: .\docs\ui\templates\docs\base.html:209
 msgid "Publish updates, policies, and compliance docs."
-msgstr "نشر التحديثات والسياسات ووثائق الامتثال."
+msgstr "发布更新、政策与合规文档。"
 
 #: .\docs\ui\templates\docs\base.html:213
 msgid "Multilingual content"
-msgstr "محتوى متعدد اللغات"
+msgstr "多语言内容"
 
 #: .\docs\ui\templates\docs\base.html:214
 msgid "Maintain parity across languages with Wagtail i18n."
-msgstr "الحفاظ على التوازي بين اللغات باستخدام التدويل في Wagtail."
+msgstr "使用 Wagtail 国际化保持各语言一致性。"
 
 #: .\docs\ui\templates\docs\base.html:218
 msgid "In‑product help"
-msgstr "مساعدة داخل المنتج"
+msgstr "产品内帮助"
 
 #: .\docs\ui\templates\docs\base.html:219
 msgid "Surface contextual docs via the REST API."
-msgstr "إظهار وثائق سياقية عبر واجهة REST."
+msgstr "通过 REST API 提供上下文文档。"
 
 #: .\docs\ui\templates\docs\base.html:234
 #: .\docs\ui\templates\docs\base.html:243
 msgid "Docs"
-msgstr "وثائق"
+msgstr "文档"
 
 #: .\docs\ui\templates\docs\base.html:247
 msgid "Get started with Django Docs"
-msgstr "ابدأ مع وثائق جانغو"
+msgstr "开始使用 Django 文档"
 
 #: .\docs\ui\templates\docs\base.html:259
 #: .\docs\ui\templates\docs\base.html:268
 msgid "Contribute"
-msgstr "ساهم"
+msgstr "参与贡献"
 
 #: .\docs\ui\templates\docs\base.html:272
 msgid "Please refer to our CONTRIBUTING guide"
-msgstr "يرجى الرجوع إلى دليل المساهمة لدينا"
+msgstr "请参阅我们的贡献指南"
 
 #: .\docs\ui\templates\docs\base.html:285
 #: .\docs\ui\templates\docs\base.html:294
 msgid "Support"
-msgstr "دعم"
+msgstr "支持"
 
 #: .\docs\ui\templates\docs\base.html:298
 msgid "For inquiries or support, please open an issue"
-msgstr "للاستفسارات أو الدعم، يرجى فتح بلاغ"
+msgstr "如需咨询或支持，请提交问题"
 
 #: .\docs\ui\templates\docs\base.html:356
 #: .\docs\ui\templates\docs\base.html:366
 msgid "Repo"
-msgstr "المستودع"
+msgstr "仓库"
 
 #: .\docs\ui\templates\docs\base.html:372
 #: .\docs\ui\templates\docs\base.html:379
 msgid "Package"
-msgstr "الحزمة"
+msgstr "软件包"
 
 #: .\docs\ui\templates\docs\base.html:386
 #: .\docs\ui\templates\docs\base.html:394
 msgid "Close"
-msgstr "إغلاق"
+msgstr "关闭"
 
 #: .\docs\ui\templates\docs\components\form.html:31
 msgid "Submit"
-msgstr "إرسال"
+msgstr "提交"
 
 #: .\docs\ui\templates\docs\components\pagination.html:8
 #: .\docs\ui\templates\docs\components\pagination.html:15
 msgid "Previous"
-msgstr "السابق"
+msgstr "上一页"
 
 #: .\docs\ui\templates\docs\components\pagination.html:21
 #: .\docs\ui\templates\docs\components\pagination.html:24
 msgid "First"
-msgstr "الأولى"
+msgstr "第一页"
 
 #: .\docs\ui\templates\docs\components\pagination.html:31
 msgid "Current"
-msgstr "الحالية"
+msgstr "当前页"
 
 #: .\docs\ui\templates\docs\components\pagination.html:34
 msgid "of"
-msgstr "من"
+msgstr "共"
 
 #: .\docs\ui\templates\docs\components\pagination.html:41
 #: .\docs\ui\templates\docs\components\pagination.html:47
 msgid "Last"
-msgstr "الأخيرة"
+msgstr "最后一页"
 
 #: .\docs\ui\templates\docs\components\pagination.html:53
 #: .\docs\ui\templates\docs\components\pagination.html:63
 #: .\docs\ui\templates\docs\components\prev_next.html:32
 msgid "Next"
-msgstr "التالي"
+msgstr "下一页"
 
 #: .\docs\ui\templates\docs\components\prev_next.html:7
 msgid "Previous page"
-msgstr "الصفحة السابقة"
+msgstr "上一页"
 
 #: .\docs\ui\templates\docs\components\prev_next.html:15
 msgid "Prev"
-msgstr "السابق"
+msgstr "上一页"
 
 #: .\docs\ui\templates\docs\components\prev_next.html:25
 msgid "Next page"
-msgstr "الصفحة التالية"
+msgstr "下一页"
 
 #: .\docs\ui\templates\docs\components\theme.html:5
 #: .\docs\ui\templates\docs\components\theme.html:13
 msgid "Theme"
-msgstr "السمة"
+msgstr "主题"
 
 #: .\docs\ui\templates\docs\components\theme.html:22
 msgid "Select a theme"
-msgstr "اختر سمة"
+msgstr "选择主题"
 
 #: .\docs\ui\templates\docs\index.html:23
 #: .\docs\ui\templates\docs\search.html:48
 #: .\docs\ui\templates\docs\section.html:25
 msgid "Read"
-msgstr "اقرأ"
+msgstr "阅读"
 
 #: .\docs\ui\templates\docs\search.html:31
 msgid "Go"
-msgstr "اذهب"
+msgstr "搜索"
 
 #: .\docs\ui\templates\docs\search.html:38
 msgid "Search results"
-msgstr "نتائج البحث"
+msgstr "搜索结果"
 
 #: .\docs\ui\templates\docs\search.html:58
 msgid "No results found"
-msgstr "لا توجد نتائج"
+msgstr "未找到结果"
 
 #: .\docs\ui\templates\registration\logged_out.html:4
 msgid "Logged out"
-msgstr "تم تسجيل الخروج"
+msgstr "已退出登录"
 
 #: .\docs\ui\templates\registration\logged_out.html:34
 msgid "Logged Out"
-msgstr "تم تسجيل الخروج"
+msgstr "已退出登录"
 
 #: .\docs\ui\templates\registration\logged_out.html:36
 msgid "Thanks for spending some quality time with us today."
-msgstr "شكرًا لقضاء بعض الوقت الجميل معنا اليوم."
+msgstr "感谢你今天与我们共度美好时光。"
 
 #: .\docs\ui\templates\registration\login.html:4
 #: .\docs\ui\templates\registration\login.html:34
 msgid "Log in"
-msgstr "تسجيل الدخول"
+msgstr "登录"
 
 #: .\docs\ui\templates\registration\login.html:36
 msgid "Welcome, please login to continue."
-msgstr "مرحبًا، يرجى تسجيل الدخول للمتابعة."
+msgstr "欢迎，请登录以继续。"
 
 #: .\docs\ui\templates\registration\login.html:46
 msgid ""
 "Your account doesn't have access to this page. To proceed, please login with "
 "an account that has access. <!---->"
 msgstr ""
-"حسابك لا يمتلك صلاحية الوصول إلى هذه الصفحة. للمتابعة، يرجى تسجيل الدخول بحساب لديه صلاحية الوصول. <!---->"
+"你的账户无权访问此页面。要继续，请使用具有访问权限的账户登录。 <!---->"
 
 #: .\docs\ui\templates\rest_framework\api.html:24
 #: .\docs\ui\templates\rest_framework\api.html:32
 msgid "Django Docs | API"
-msgstr "وثائق جانغو | واجهة برمجة التطبيقات"
+msgstr "Django 文档 | API"
 
 #: .\docs\ui\templates\rest_framework\api.html:45
 #: .\docs\ui\templates\rest_framework\api.html:51
 msgid "Home"
-msgstr "الصفحة الرئيسية"
+msgstr "主页"
 
 #: .\docs\ui\templates\rest_framework\api.html:56
 #: .\docs\ui\templates\rest_framework\api.html:63
 msgid "Pages"
-msgstr "الصفحات"
+msgstr "页面"
 
 #: .\docs\ui\templates\rest_framework\api.html:68
 #: .\docs\ui\templates\rest_framework\api.html:75
 msgid "Documents"
-msgstr "المستندات"
+msgstr "文档"
 
 #: .\docs\ui\templates\rest_framework\api.html:80
 #: .\docs\ui\templates\rest_framework\api.html:87
 msgid "Images"
-msgstr "الصور"
+msgstr "图片"
 
 #: .\docs\ui\templates\rest_framework\api.html:92
 #: .\docs\ui\templates\rest_framework\api.html:99
 msgid "Redirects"
-msgstr "عمليات إعادة التوجيه"
+msgstr "重定向"
