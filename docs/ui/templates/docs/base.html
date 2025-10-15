@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html
   lang="{{ LANGUAGE_CODE }}"
-  dir="{% if LANGUAGE_CODE == 'ar' %}rtl{% else %}ltr{% endif %}"
+  dir="{% if LANGUAGE_BIDI %}rtl{% else %}ltr{% endif %}"
   data-theme="{% block theme %}luxury{% endblock %}"
 >
   {% get_site_root as home %}
@@ -421,8 +421,7 @@
             <ul class="menu 2xl:menu-lg size-full grow gap-2 overflow-y-auto">
               {% block drawer_content %}
               <!---->
-              {% include "docs/components/tree.html" with
-              nodes=home.get_children %}
+              {% include "docs/components/tree.html" with nodes=home.get_children %}
               <!---->
               {% endblock %}
             </ul>
